@@ -1,0 +1,15 @@
+{
+    "name": "aymen/applicationwebe-commerce",
+    "autoload": {
+        "psr-4": {
+            "Aymen\\ApplicationwebeCommerce\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Aymen Oumaalla",
+            "email": "aymenoml2002@gmail.com"
+        }
+    ],
+    "require": {}
+}
