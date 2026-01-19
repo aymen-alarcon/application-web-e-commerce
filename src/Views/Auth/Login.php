@@ -91,4 +91,4 @@
                 </div>
             </div>
         </main>
-<?php require "includes/footer.php"; ?>
+<?php require "src/Views/includes/footer.php"; ?>
