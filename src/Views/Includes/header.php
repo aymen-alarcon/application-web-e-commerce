@@ -3,21 +3,25 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Sign Up | PHP MVC App</title>
-    <link rel="shortcut icon" href="../../../public/assets/images/logo.jpg" type="image/x-icon">
+    <title>Product Detail Page - ElectroShop</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#137fec",
-                        "background-light": "#f6f7f8",
-                        "background-dark": "#101922",
+                        "primary": "#136986",
+                        "background-light": "#ffffff",
+                        "background-dark": "#1c1e22",
                     },
                     fontFamily: {
                         "display": ["Inter"]
@@ -27,26 +31,54 @@
             },
         }
     </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .filled-star {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
 </head>
-<body class="font-display bg-background-light dark:bg-background-dark min-h-screen flex flex-col">
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-200">
     <header
-        class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-gray-800 bg-white dark:bg-background-dark px-10 py-3">
-        <div class="flex items-center gap-4 text-primary">
-            <div class="size-6">
-                <span class="material-symbols-outlined text-3xl">school</span>
+        class="sticky top-0 z-50 w-full border-b border-slate-100 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
+        <div class="max-w-[1280px] mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-10">
+                <div class="flex items-center gap-2 text-primary">
+                    <span class="material-symbols-outlined text-3xl">bolt</span>
+                    <h2 class="text-xl font-black tracking-tight uppercase">ElectroShop</h2>
+                </div>
+                <nav class="hidden md:flex items-center gap-6">
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Laptops</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Smartphones</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Audio</a>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Monitors</a>
+                </nav>
             </div>
-            <a href="main.php">
-                <h2 class="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">AdminCore</h2>
-            </a>
-        </div>
-        <div class="flex gap-4 items-center">
-            <button
-                class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal">
-                <?php if(!isset($_SESSION["id"])):?>
-                    <a href="/login" class="truncate">Log In</a>
-                <?php else: ?>
-                    <a href="/logout" class="truncate">Log out</a>
-                <?php endif;?>
-            </button>
+            <div class="flex items-center gap-4 flex-1 justify-end">
+                <div class="relative max-w-xs w-full hidden lg:block">
+                    <span
+                        class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+                    <input
+                        class="w-full h-9 pl-10 pr-4 rounded-lg bg-slate-100 dark:bg-slate-800 border-none text-sm focus:ring-2 focus:ring-primary/20 transition-all"
+                        placeholder="Search components..." type="text" />
+                </div>
+                <button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
+                    <span class="material-symbols-outlined">person</span>
+                </button>
+                <button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors relative">
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                    <span
+                        class="absolute top-1 right-1 bg-primary text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">2</span>
+                </button>
+            </div>
         </div>
     </header>
