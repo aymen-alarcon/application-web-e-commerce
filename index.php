@@ -10,7 +10,6 @@ use App\core\Router;
 $db = new DatabaseConnection();
 $conn = $db->establishConnection();
 
-
 $routing = new Router();
 
 $controller = new AuthController($conn);

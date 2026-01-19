@@ -1,7 +1,6 @@
 <?php 
 namespace App\Controller;
 
-use App\core\AuthMiddleware;
 use App\Models\User;
 use PDO;
 
