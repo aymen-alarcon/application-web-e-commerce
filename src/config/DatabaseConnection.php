@@ -7,7 +7,7 @@ use PDOException;
 class DatabaseConnection{
     function establishConnection(){
         try {
-            $dsn = new PDO("mysql:host=localhost;dbname=gestion_users;", "root", "");
+            $dsn = new PDO("mysql:host=localhost;dbname=e_commerce;", "root", "");
             $dsn->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             echo $e->getMessage();
