@@ -2,7 +2,7 @@
     "name": "aymen/applicationwebe-commerce",
     "autoload": {
         "psr-4": {
-            "Aymen\\ApplicationwebeCommerce\\": "src/"
+            "App\\": "src/"
         }
     },
     "authors": [

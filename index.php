@@ -2,12 +2,12 @@
 require_once __DIR__ . '/vendor/autoload.php';
 
 session_start();
+use App\config\DatabaseConnection;
 
 use App\Controller\AuthController;
-use App\config\DatabaseConnection;
 use App\core\Router;
 
-$db = new DatabaseConnection();
+$db = new DatabaseConnection;
 $conn = $db->establishConnection();
 
 $routing = new Router();
