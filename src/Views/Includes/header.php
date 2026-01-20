@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Product Detail Page - ElectroShop</title>
+    <link rel="shortcut icon" href="../../../public/images/logo.jpg" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap"
         rel="stylesheet" />
@@ -54,7 +55,7 @@
             <div class="flex items-center gap-10">
                 <div class="flex items-center gap-2 text-primary">
                     <span class="material-symbols-outlined text-3xl">bolt</span>
-                    <h2 class="text-xl font-black tracking-tight uppercase">ElectroShop</h2>
+                    <a href="/Home" class="text-xl font-black tracking-tight uppercase">ElectroShop</a>
                 </div>
                 <nav class="hidden md:flex items-center gap-6">
                     <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Laptops</a>
@@ -71,14 +72,14 @@
                         class="w-full h-9 pl-10 pr-4 rounded-lg bg-slate-100 dark:bg-slate-800 border-none text-sm focus:ring-2 focus:ring-primary/20 transition-all"
                         placeholder="Search components..." type="text" />
                 </div>
-                <button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
+                <a href="/Logout" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
                     <span class="material-symbols-outlined">person</span>
-                </button>
-                <button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors relative">
+                </a>
+                <a href="/Cart" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors relative">
                     <span class="material-symbols-outlined">shopping_cart</span>
                     <span
                         class="absolute top-1 right-1 bg-primary text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">2</span>
-                </button>
+                </a>
             </div>
         </div>
     </header>

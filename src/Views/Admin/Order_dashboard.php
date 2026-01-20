@@ -1,5 +1,5 @@
-<?php "src/Views/Includes/sidebar.php"; ?>
-    <main class="flex-1 flex flex-col min-w-0">
+<?php require_once "src/Views/Includes/sidebar.php"; ?>
+    <main class="ml-64 flex-1 overflow-y-auto flex flex-col">
         <header
             class="bg-white dark:bg-background-dark border-b border-slate-200 dark:border-slate-800 sticky top-0 z-10 px-8 py-4">
             <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
@@ -8,11 +8,6 @@
                     <p class="text-sm text-slate-500 dark:text-slate-400">Process and manage customer transactions</p>
                 </div>
                 <div class="flex items-center gap-3">
-                    <button
-                        class="flex items-center gap-2 px-4 h-10 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-bold text-slate-700 dark:text-slate-200 hover:bg-slate-50 transition-colors">
-                        <span class="material-symbols-outlined text-[18px]">download</span>
-                        Export CSV
-                    </button>
                     <button
                         class="flex items-center gap-2 px-4 h-10 bg-primary text-white rounded-lg text-sm font-bold hover:bg-primary/90 shadow-sm transition-all active:scale-95">
                         <span class="material-symbols-outlined text-[18px]">add</span>
@@ -295,4 +290,3 @@
             </div>
         </div>
     </main>
-<?php "src/Views/Includes/footer.php"; ?>

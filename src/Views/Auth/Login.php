@@ -86,7 +86,7 @@
                 <div class="mt-8 border-t border-[#f0f2f4] dark:border-[#2a343d] pt-6 text-center">
                     <p class="text-[#617589] dark:text-gray-400 text-sm">
                         Don't have an account?
-                        <a class="text-primary font-bold hover:underline ml-1" href="/signup">Create an account</a>
+                        <a class="text-primary font-bold hover:underline ml-1" href="/Signup">Create an account</a>
                     </p>
                 </div>
             </div>

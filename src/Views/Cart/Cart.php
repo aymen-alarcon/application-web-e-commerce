@@ -1,8 +1,8 @@
-<?php "src/Views/Includes/header.php"; ?>
+<?php require_once "src/Views/Includes/header.php"; ?>
             <main class="flex-1 px-6 lg:px-40 py-8 max-w-[1440px] mx-auto w-full">
                 <div class="flex flex-wrap items-center gap-2 mb-6">
                     <a class="text-[#647e87] dark:text-gray-400 text-sm font-medium hover:text-primary"
-                        href="#">Home</a>
+                        href="/Home">Home</a>
                     <span class="text-[#647e87] dark:text-gray-600 text-sm">/</span>
                     <span class="text-primary text-sm font-bold">Shopping Cart</span>
                 </div>
@@ -206,4 +206,4 @@
                     </div>
                 </div>
             </main>
-<?php "src/Views/Includes/footer.php"; ?>
+<?php require_once "src/Views/Includes/footer.php"; ?>

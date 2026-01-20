@@ -2,7 +2,6 @@
 namespace App\Controller;
 
 use App\Models\User;
-use App\Service\UserService;
 use PDO;
 
 class AuthController{
@@ -14,23 +13,21 @@ class AuthController{
     }
 
     function loginUser(){
-        $handler = new User();
+        $handler = new User($this->conn);
         $handler->setEmail($_POST["email"]);
         $handler->setPassword($_POST["password"]);
-        $repo = new UserService($this->conn, $handler);
-        $repo->loginUser();
+        $handler->loginUser();
         header("Location: /Home");
         exit;
     }
 
     function createUser(){
-        $handler = new User();
+        $handler = new User($this->conn);
         $handler->setFirst_name($_POST["first_name"]);
         $handler->setLast_name($_POST["last_name"]);
         $handler->setEmail($_POST["email"]);
         $handler->setPassword($_POST["password"]);
-        $repo = new UserService($this->conn, $handler);
-        $repo->createUser();
+        $handler->createUser();
         header("Location: /Home");
         exit;
     }

@@ -1,8 +1,9 @@
 <?php
 namespace App\Models;
 
-use App\config;
+use App\Models\Role;
 use PDO;
+use PDOException;
 
 class User{
     private ?PDO $conn;
@@ -12,8 +13,9 @@ class User{
     private ?string $email;
     private ?string $password;
     private ?string $created_at;
+    private ?int $role_id;
 
-    function __construct($conn = NULL, $id = NULL, $first_name = NULL, $last_name = NULL, $email = NULL, $password = NUll, $created_at = NULL)
+    function __construct(PDO $conn = NULL,$id = NULL, $first_name = NULL, $last_name = NULL, $email = NULL, $password = NUll, $created_at = NULL, $role_id = 2)
     {
         $this->conn = $conn;
         $this->id = $id;
@@ -22,6 +24,7 @@ class User{
         $this->email = $email;
         $this->password = $password;
         $this->created_at = $created_at;
+        $this->role_id = $role_id;
     }
 
     public function getId()
@@ -80,5 +83,64 @@ class User{
 
     public function setCreated_at($created_at) {
         $this->created_at = $created_at;
+    }
+
+    public function getRole_id()
+    {
+        return $this->role_id;
+    }
+
+    public function setRole_id($role_id)
+    {
+        $this->role_id = $role_id;
+
+        return $this;
+    }
+
+    function createUser(){
+        $sql = "INSERT INTO users (first_name, last_name, email, password, created_at) Values (:first_name, :last_name, :email, :password, now())";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(":first_name", $this->getFirst_name());
+        $stmt->bindValue(":last_name", $this->getLast_name());
+        $stmt->bindValue(":email", $this->getEmail());
+        $stmt->bindValue(":password", password_hash($this->getPassword(), PASSWORD_DEFAULT));
+        $stmt->execute();
+        $userId = $this->conn->lastInsertId();
+        $this->setId($userId);
+        $_SESSION["id"] = $userId;
+        $this->readById();
+    }
+
+    function loginUser(){
+        $sql = "SELECT * FROM users WHERE email = :email";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(":email", $this->getEmail());
+        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE,User::class);
+        $stmt->execute();
+        $user = $stmt->fetch();
+        if (password_verify($this->getPassword() ,$user->getPassword()) === TRUE) {
+            $_SESSION["id"] = $this->getId();
+            $_SESSION["user"] = $user;
+            if ($user->getRole_id() === 1) {
+                header("Location: /Admin/Dashboard");
+                exit;
+            }else{
+                header("Location: /Home");
+                exit;
+            }
+        } else {
+            throw new PDOException("Invalid email or password.");
+            return NULL;
+        }
+    }
+
+    function readById(){
+        $sql = "SELECT * FROM users WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(":id", $this->getId());
+        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE,User::class);
+        $stmt->execute();
+        $user = $stmt->fetch();
+        return $user;
     }
 }

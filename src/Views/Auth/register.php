@@ -126,7 +126,7 @@
                 <div class="pt-6 text-center">
                     <p class="text-sm text-gray-600 dark:text-gray-400">
                         Already have an account?
-                        <a class="text-primary font-bold hover:underline ml-1" href="/login">Log In</a>
+                        <a class="text-primary font-bold hover:underline ml-1" href="/Login">Log In</a>
                     </p>
                 </div>
             </form>

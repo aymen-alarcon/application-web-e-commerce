@@ -1,7 +1,7 @@
 <?php require "src/Views/Includes/header.php"; ?>
     <main class="max-w-[1280px] mx-auto px-6 py-8">
         <nav class="flex items-center gap-2 text-sm text-slate-500 mb-8">
-            <a class="hover:text-primary" href="#">Home</a>
+            <a class="hover:text-primary" href="/Home">Home</a>
             <span class="material-symbols-outlined text-xs">chevron_right</span>
             <a class="hover:text-primary" href="#">Electronics</a>
             <span class="material-symbols-outlined text-xs">chevron_right</span>
@@ -176,66 +176,6 @@
                         <span class="font-semibold text-right md:text-left text-slate-900 dark:text-white">12.5 kg (with
                             stand)</span>
                     </div>
-                </div>
-            </div>
-        </section>
-        <section class="mt-20">
-            <h3 class="text-2xl font-bold mb-8">Customer Reviews</h3>
-            <div
-                class="flex flex-col md:flex-row gap-12 p-8 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800">
-                <div class="flex flex-col gap-2 items-center md:items-start">
-                    <p class="text-slate-900 dark:text-white text-6xl font-black leading-tight">4.8</p>
-                    <div class="flex gap-1 text-amber-500 mb-1">
-                        <span class="material-symbols-outlined filled-star">star</span>
-                        <span class="material-symbols-outlined filled-star">star</span>
-                        <span class="material-symbols-outlined filled-star">star</span>
-                        <span class="material-symbols-outlined filled-star">star</span>
-                        <span class="material-symbols-outlined">star_half</span>
-                    </div>
-                    <p class="text-slate-500 text-sm font-medium">Based on 124 reviews</p>
-                </div>
-                <div class="flex-1 space-y-3">
-                    <div class="grid grid-cols-[20px_1fr_40px] items-center gap-4">
-                        <p class="text-slate-600 dark:text-slate-400 text-sm font-bold">5</p>
-                        <div class="flex h-2.5 flex-1 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
-                            <div class="rounded-full bg-primary" style="width: 82%;"></div>
-                        </div>
-                        <p class="text-slate-400 text-sm font-medium text-right">82%</p>
-                    </div>
-                    <div class="grid grid-cols-[20px_1fr_40px] items-center gap-4">
-                        <p class="text-slate-600 dark:text-slate-400 text-sm font-bold">4</p>
-                        <div class="flex h-2.5 flex-1 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
-                            <div class="rounded-full bg-primary" style="width: 12%;"></div>
-                        </div>
-                        <p class="text-slate-400 text-sm font-medium text-right">12%</p>
-                    </div>
-                    <div class="grid grid-cols-[20px_1fr_40px] items-center gap-4">
-                        <p class="text-slate-600 dark:text-slate-400 text-sm font-bold">3</p>
-                        <div class="flex h-2.5 flex-1 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
-                            <div class="rounded-full bg-primary" style="width: 4%;"></div>
-                        </div>
-                        <p class="text-slate-400 text-sm font-medium text-right">4%</p>
-                    </div>
-                    <div class="grid grid-cols-[20px_1fr_40px] items-center gap-4">
-                        <p class="text-slate-600 dark:text-slate-400 text-sm font-bold">2</p>
-                        <div class="flex h-2.5 flex-1 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
-                            <div class="rounded-full bg-primary" style="width: 2%;"></div>
-                        </div>
-                        <p class="text-slate-400 text-sm font-medium text-right">2%</p>
-                    </div>
-                    <div class="grid grid-cols-[20px_1fr_40px] items-center gap-4">
-                        <p class="text-slate-600 dark:text-slate-400 text-sm font-bold">1</p>
-                        <div class="flex h-2.5 flex-1 overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
-                            <div class="rounded-full bg-primary" style="width: 0%;"></div>
-                        </div>
-                        <p class="text-slate-400 text-sm font-medium text-right">0%</p>
-                    </div>
-                </div>
-                <div class="flex flex-col justify-center">
-                    <button
-                        class="px-6 py-3 border-2 border-primary text-primary font-bold rounded-lg hover:bg-primary hover:text-white transition-all whitespace-nowrap">
-                        Write a Review
-                    </button>
                 </div>
             </div>
         </section>

@@ -15,7 +15,7 @@
         rel="stylesheet" />
     <script id="tailwind-config">
         tailwind.config = {
-            darkMode: "class",
+            darkMode: "class",  
             theme: {
                 extend: {
                     colors: {
@@ -66,39 +66,29 @@
                 </div>
             </div>
             <nav class="flex-1 px-4 space-y-1">
-                <a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors group"
-                    href="#">
+                <a class="<?php if(str_contains($_SERVER["PHP_SELF"] ,"Dashboard")){echo "sidebar-active shadow-sm shadow-primary/20";} ?> flex items-center gap-3 px-3 py-2.5 text-slate-600 rounded-lg transition-colors group" href="/Admin/Dashboard">
                     <span class="material-symbols-outlined text-[22px]">dashboard</span>
                     <span class="text-sm font-medium">Dashboard</span>
                 </a>
-                <a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors group"
-                    href="#">
+                <a class="<?php if(str_contains($_SERVER["PHP_SELF"] ,"Products")){echo "sidebar-active shadow-sm shadow-primary/20";} ?> flex items-center gap-3 px-3 py-2.5 text-slate-600 rounded-lg transition-colors group"
+                    href="/Admin/Products">
                     <span class="material-symbols-outlined text-[22px]">inventory_2</span>
                     <span class="text-sm font-medium">Products</span>
                 </a>
-                <a class="sidebar-active flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors shadow-sm shadow-primary/20"
-                    href="#">
+                <a class="<?php if(str_contains($_SERVER["PHP_SELF"] ,"Categories")){echo "sidebar-active shadow-sm shadow-primary/20";} ?> flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors "
+                    href="/Admin/Categories">
                     <span class="material-symbols-outlined text-[22px]">category</span>
                     <span class="text-sm font-medium">Categories</span>
                 </a>
-                <a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors group"
-                    href="#">
+                <a class="<?php if(str_contains($_SERVER["PHP_SELF"] ,"Orders")){echo "sidebar-active shadow-sm shadow-primary/20";} ?> flex items-center gap-3 px-3 py-2.5 text-slate-600 rounded-lg transition-colors group"
+                    href="/Admin/Orders">
                     <span class="material-symbols-outlined text-[22px]">shopping_cart</span>
                     <span class="text-sm font-medium">Orders</span>
                 </a>
-                <a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors group"
-                    href="#">
+                <a class="<?php if(str_contains($_SERVER["PHP_SELF"] ,"Users")){echo "sidebar-active shadow-sm shadow-primary/20";} ?> flex items-center gap-3 px-3 py-2.5 text-slate-600 rounded-lg transition-colors group"
+                    href="/Admin/Users">
                     <span class="material-symbols-outlined text-[22px]">group</span>
                     <span class="text-sm font-medium">Users</span>
-                </a>
-                <div class="pt-4 pb-2 px-3">
-                    <p class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest">
-                        Settings</p>
-                </div>
-                <a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors group"
-                    href="#">
-                    <span class="material-symbols-outlined text-[22px]">settings</span>
-                    <span class="text-sm font-medium">Config</span>
                 </a>
             </nav>
             <div class="p-4 border-t border-slate-200 dark:border-slate-800">
@@ -111,9 +101,9 @@
                         <p class="text-sm font-semibold text-slate-900 dark:text-white truncate">Alex Rivera</p>
                         <p class="text-xs text-slate-500 truncate">Super Admin</p>
                     </div>
-                    <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                    <a href="/Logout" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
                         <span class="material-symbols-outlined text-[20px]">logout</span>
-                    </button>
+                    </a>
                 </div>
             </div>
         </aside>

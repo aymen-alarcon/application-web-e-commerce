@@ -72,11 +72,6 @@
                             <span class="material-symbols-outlined text-[18px]">filter_list</span>
                             Filter
                         </button>
-                        <button
-                            class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors border border-slate-200 dark:border-slate-800">
-                            <span class="material-symbols-outlined text-[18px]">download</span>
-                            Export
-                        </button>
                     </div>
                 </div>
                 <div class="overflow-x-auto">
