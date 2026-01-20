@@ -1,4 +1,4 @@
-<?php require __DIR__ . "/includes/header.php"; ?>
+<?php require "src/Views/Includes/header.php"; ?>
     <main class="max-w-[1280px] mx-auto px-6 py-8">
         <nav class="flex items-center gap-2 text-sm text-slate-500 mb-8">
             <a class="hover:text-primary" href="#">Home</a>
@@ -240,4 +240,4 @@
             </div>
         </section>
     </main>
-<?php require __DIR__ . "/includes/footer.php"; ?>
+<?php require "src/Views/Includes/footer.php"; ?>

@@ -1,4 +1,4 @@
-
+<?php require "src/Views/Includes/header.php"; ?>
     <main class="max-w-[1280px] mx-auto px-6 py-8">
         <nav class="flex items-center gap-2 text-sm text-slate-500 mb-8">
             <a class="hover:text-primary" href="#">Home</a>
@@ -240,24 +240,4 @@
             </div>
         </section>
     </main>
-    <footer class="bg-slate-50 dark:bg-slate-900 mt-20 py-12 border-t border-slate-200 dark:border-slate-800">
-        <div class="max-w-[1280px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="flex items-center gap-2 text-slate-400">
-                <span class="material-symbols-outlined text-2xl">bolt</span>
-                <span class="font-bold tracking-tight uppercase">ElectroShop © 2024</span>
-            </div>
-            <div class="flex gap-8 text-sm font-medium text-slate-500">
-                <a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
-                <a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
-                <a class="hover:text-primary transition-colors" href="#">Support</a>
-            </div>
-            <div class="flex gap-4">
-                <span class="material-symbols-outlined text-slate-400 hover:text-primary cursor-pointer">language</span>
-                <span
-                    class="material-symbols-outlined text-slate-400 hover:text-primary cursor-pointer">help_outline</span>
-            </div>
-        </div>
-    </footer>
-</body>
-
-</html>
+<?php require "src/Views/Includes/footer.php"; ?>

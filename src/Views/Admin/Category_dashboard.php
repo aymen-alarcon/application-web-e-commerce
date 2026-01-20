@@ -1,4 +1,4 @@
-<?php require __DIR__ . "/includes/sidebar.php"; ?>
+<?php require "src/Views/Includes/sidebar.php"; ?>
         <main class="flex-1 ml-64 p-8">
             <div class="flex items-center gap-2 mb-2 text-sm">
                 <a class="text-slate-500 hover:text-primary transition-colors" href="#">Admin</a>
@@ -306,4 +306,4 @@
                     </div>
                 </div>
             </div>
-<?php require __DIR__ . "/includes/footer.php"; ?>
+<?php require "src/Views/Includes/footer.php"; ?>

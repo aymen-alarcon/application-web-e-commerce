@@ -1,4 +1,4 @@
-<?php require __DIR__ . "/includes/header.php"; ?>
+<?php require "src/Views/Includes/header.php"; ?>
             <main class="flex-1 max-w-[1280px] mx-auto w-full px-4 lg:px-40 py-8 space-y-12">
                 <section class="@container">
                     <div
@@ -244,4 +244,4 @@
                     </div>
                 </section>
             </main>
-<?php require __DIR__ . "/includes/footer.php"; ?>
+<?php require "src/Views/Includes/footer.php"; ?>

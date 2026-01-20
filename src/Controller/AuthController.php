@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Models\User;
+use App\Service\UserService;
 use PDO;
 
 class AuthController{
@@ -12,41 +13,25 @@ class AuthController{
         $this->conn = $conn;
     }
 
-    public function loginForm()
-    {
-        require __DIR__ . '/../views/Auth/Login.php';
-    }
-
-    public function signupForm()
-    {
-        require __DIR__ . '/../views/Auth/register.php';
-    }
-
-    public function logOutForm(){
-        require __DIR__ . '/../views/Auth/Logout.php';
-    }
-
-    public function mainPage(){
-        require __DIR__ . '/../views/Home/home.php';
-    }
-
     function loginUser(){
-        $handler = new User($this->conn);
+        $handler = new User();
         $handler->setEmail($_POST["email"]);
         $handler->setPassword($_POST["password"]);
-        $user = $handler->loginUser();
-        header("Location: /main");
+        $repo = new UserService($this->conn, $handler);
+        $repo->loginUser();
+        header("Location: /Home");
         exit;
     }
 
     function createUser(){
-        $handler = new User($this->conn);
+        $handler = new User();
         $handler->setFirst_name($_POST["first_name"]);
         $handler->setLast_name($_POST["last_name"]);
         $handler->setEmail($_POST["email"]);
         $handler->setPassword($_POST["password"]);
-        $handler->createUser();
-        header("Location: /main");
+        $repo = new UserService($this->conn, $handler);
+        $repo->createUser();
+        header("Location: /Home");
         exit;
     }
 }

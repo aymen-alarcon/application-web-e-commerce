@@ -5,6 +5,7 @@ session_start();
 
 use App\config\DatabaseConnection;
 use App\Controller\AuthController;
+use App\Controller\ViewsController;
 use App\core\Router;
 
 $db = new DatabaseConnection;
@@ -12,14 +13,15 @@ $conn = $db->establishConnection();
 
 $routing = new Router();
 
-$controller = new AuthController($conn);
+$authController = new AuthController($conn);
+$viewsController =  new ViewsController();
 
-$routing->get("/login", [$controller, "loginForm"]);
-$routing->get("/signup", [$controller, "signupForm"]);
-$routing->get("/logout", [$controller, "logOutForm"]);
-$routing->get("/main", [$controller, "mainPage"]);
-$routing->post("/loginProcess", [$controller, "loginUser"]);
-$routing->post("/registerProcess", [$controller, "createUser"]);
-$routing->get("/", [$controller, "loginForm"]);
+$routing->get("/", [$viewsController, "loginForm"]);
+$routing->get("/Login", [$viewsController, "loginForm"]);
+$routing->get("/Signup", [$viewsController, "signupForm"]);
+$routing->get("/Logout", [$viewsController, "logOutForm"]);
+$routing->get("/Home", [$viewsController, "mainPage"]);
+$routing->post("/loginProcess", [$authController, "loginUser"]);
+$routing->post("/registerProcess", [$authController, "createUser"]);
 
 echo $routing->resolve();

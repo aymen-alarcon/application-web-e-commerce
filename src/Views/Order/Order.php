@@ -1,4 +1,4 @@
-<?php require __DIR__ . "/includes/header.php"; ?>
+<?php require "src/Views/Includes/header.php"; ?>
     <main class="max-w-5xl mx-auto px-4 py-10">
         <div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
@@ -187,4 +187,4 @@
             </button>
         </div>
     </main>
-<?php require __DIR__ . "/includes/footer.php"; ?>
+<?php require "src/Views/Includes/footer.php"; ?>

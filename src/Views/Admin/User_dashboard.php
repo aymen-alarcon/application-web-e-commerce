@@ -1,4 +1,4 @@
-<?php require __DIR__ . "/includes/sidebar.php"; ?>
+<?php require "src/Views/Includes/sidebar.php"; ?>
 <main class="ml-64 flex-1 min-h-screen">
     <header
         class="bg-white dark:bg-background-dark border-b border-border-muted dark:border-gray-700 sticky top-0 z-40">
@@ -201,4 +201,4 @@
             </div>
         </div>
     </div>
-<?php require __DIR__ . "/includes/footer.php"; ?>
+<?php require "src/Views/Includes/footer.php"; ?>
