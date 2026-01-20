@@ -1,3 +1,9 @@
+<?php
+    use App\config\DatabaseConnection;
+
+    $db = new DatabaseConnection();
+    $conn = $db->establishConnection();
+?>
 <!DOCTYPE html>
 <html class="light" lang="en">
 <head>

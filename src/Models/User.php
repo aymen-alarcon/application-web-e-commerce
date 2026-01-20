@@ -1,7 +1,6 @@
 <?php
 namespace App\Models;
 
-use App\Models\Role;
 use PDO;
 use PDOException;
 
@@ -119,7 +118,7 @@ class User{
         $stmt->execute();
         $user = $stmt->fetch();
         if (password_verify($this->getPassword() ,$user->getPassword()) === TRUE) {
-            $_SESSION["id"] = $this->getId();
+            $_SESSION["id"] = $user->getId();
             $_SESSION["user"] = $user;
             if ($user->getRole_id() === 1) {
                 header("Location: /Admin/Dashboard");
@@ -138,7 +137,7 @@ class User{
         $sql = "SELECT * FROM users WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(":id", $this->getId());
-        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE,User::class);
+        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, self::class);
         $stmt->execute();
         $user = $stmt->fetch();
         return $user;

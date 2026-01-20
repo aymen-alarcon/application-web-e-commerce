@@ -1,4 +1,9 @@
-<?php require "src/Views/Includes/header.php"; ?>
+<?php 
+    require "src/Views/Includes/header.php"; 
+    use App\Models\Product;
+    $handler = new Product($conn);
+    $products = $handler->read();
+?>
             <main class="flex-1 max-w-[1280px] mx-auto w-full px-4 lg:px-40 py-8 space-y-12">
                 <section class="@container">
                     <div
@@ -98,10 +103,11 @@
                     </div>
                 </section>
                 <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <?php foreach ($products as $product): ?>
                     <div
                         class="group flex flex-col bg-white dark:bg-[#1e2329] border border-[#e2e8f0] dark:border-[#2d333a] rounded-xl overflow-hidden transition-all hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1">
                         <div class="relative h-64 overflow-hidden bg-[#f1f5f9] dark:bg-[#2d333a]">
-                            <a href="/Product" class="absolute inset-0 bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-110"
+                            <a href="/Product?id=<?= $product->getId() ?>" class="absolute inset-0 bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-110"
                                 data-alt="MacBook Pro M3 in Space Gray"
                                 style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDZyHBKT3F3BRAOj5Kuty4WlqZEYLoSHfr8micg9SyCUk8RI_e9tDy7CZ06cGMHKOw1-fQO012-j4cZGMcKRVO3pknYLdzD9-87j4u8Eqo2TNuXy-47ytb6EgyuVFGrC5QMrxJpvpFLpqQn-R6Vnxibclx_L1Xeo_6zVEwMYPSo8zhc3xsczD38BSf3Ru-_PzLYMaBCju_r09LwmXY4z0c6XI-sSP-WDNczPuD0rIpPC6mN8xGFOP9SPGxnGcefmGJpR4oK1hfwveo");'>
                             </a>
@@ -112,12 +118,11 @@
                         <div class="p-5 space-y-4 flex flex-col flex-1">
                             <div class="space-y-1">
                                 <h3 class="text-sm text-[#64748b] dark:text-white/50 font-medium">Apple</h3>
-                                <p class="text-base font-bold text-[#111418] dark:text-white line-clamp-1">MacBook Pro
-                                    M3 Max</p>
+                                <p class="text-base font-bold text-[#111418] dark:text-white line-clamp-1"><?= $product->getName() ?></p>
                             </div>
                             <div class="mt-auto flex items-center justify-between gap-2">
                                 <div class="flex flex-col">
-                                    <span class="text-xl font-black text-[#111418] dark:text-white">$1,999.00</span>
+                                    <span class="text-xl font-black text-[#111418] dark:text-white">$<?= $product->getPrice() ?></span>
                                 </div>
                                 <button
                                     class="flex size-10 items-center justify-center rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors">
@@ -126,120 +131,7 @@
                             </div>
                         </div>
                     </div>
-                    <div
-                        class="group flex flex-col bg-white dark:bg-[#1e2329] border border-[#e2e8f0] dark:border-[#2d333a] rounded-xl overflow-hidden transition-all hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1">
-                        <div class="relative h-64 overflow-hidden bg-[#f1f5f9] dark:bg-[#2d333a]">
-                            <a href="/Product" class="absolute inset-0 bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-110"
-                                data-alt="Sony WH-1000XM5 wireless noise cancelling headphones"
-                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDI-zpc7tmcYGW33F8mI2pzjSMwUOySzPpsYaY3lp_7tl-rZhvLJ3he3Lu_EHHUa65J13KNfp-veicb1bg3wA9qui3FQjMtGKVY3A_L96Z87Y7dGylob7T9IpJeoOSiug06eU4qTK95YvZSSYksI_AsC3eNxPjnHK8r9ms0dEXNwTYxM1g1xmVELzkABePRy1r--ZAZ-Ov4PU2LPDYpJckRcQHFdUoDxLiOLo9-5gJBIRrysSGWbprTr_hDOPepiKWuPxFOUbFvDS4");'>
-                            </a>
-                            <span
-                                class="absolute top-3 left-3 px-2 py-1 bg-primary text-white text-[10px] font-bold rounded uppercase">Best
-                                Seller</span>
-                        </div>
-                        <div class="p-5 space-y-4 flex flex-col flex-1">
-                            <div class="space-y-1">
-                                <h3 class="text-sm text-[#64748b] dark:text-white/50 font-medium">Sony</h3>
-                                <p class="text-base font-bold text-[#111418] dark:text-white line-clamp-1">Sony
-                                    WH-1000XM5</p>
-                            </div>
-                            <div class="mt-auto flex items-center justify-between gap-2">
-                                <div class="flex flex-col">
-                                    <span class="text-xl font-black text-[#111418] dark:text-white">$349.99</span>
-                                </div>
-                                <button
-                                    class="flex size-10 items-center justify-center rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors">
-                                    <span class="material-symbols-outlined text-lg">add_shopping_cart</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="group flex flex-col bg-white dark:bg-[#1e2329] border border-[#e2e8f0] dark:border-[#2d333a] rounded-xl overflow-hidden transition-all hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1">
-                        <div class="relative h-64 overflow-hidden bg-[#f1f5f9] dark:bg-[#2d333a]">
-                            <a href="/Product" class="absolute inset-0 bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-110"
-                                data-alt="iPhone 15 Pro Titanium"
-                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBajBKBu3xX-1ES8xlK4p6i2DdUpdxN6t5xZCeb35rz-qseCIbRrFWQABIoZySoJaU3hIAh4XQwm_lrtSE-xhsopswRkMEnANr9JavgTQXEVaJrCr5gpCAOROKg8vT3bCDv9pz6_ZqXafBrWYzBp5T9W8adWIoWKzlN68Aof_upiNy-9Gh7jFhU6RR1VajS29Tcxc9RsKxbbk-wC9GeDdboDo_diJ0xeoO868IpXEPLhydhsOdf5LoLtRbUVwfdzDN-B9fUapHTxrg");'>
-                            </a>
-                        </div>
-                        <div class="p-5 space-y-4 flex flex-col flex-1">
-                            <div class="space-y-1">
-                                <h3 class="text-sm text-[#64748b] dark:text-white/50 font-medium">Apple</h3>
-                                <p class="text-base font-bold text-[#111418] dark:text-white line-clamp-1">iPhone 15 Pro
-                                </p>
-                            </div>
-                            <div class="mt-auto flex items-center justify-between gap-2">
-                                <div class="flex flex-col">
-                                    <span class="text-xl font-black text-[#111418] dark:text-white">$999.00</span>
-                                </div>
-                                <button
-                                    class="flex size-10 items-center justify-center rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors">
-                                    <span class="material-symbols-outlined text-lg">add_shopping_cart</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="group flex flex-col bg-white dark:bg-[#1e2329] border border-[#e2e8f0] dark:border-[#2d333a] rounded-xl overflow-hidden transition-all hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1">
-                        <div class="relative h-64 overflow-hidden bg-[#f1f5f9] dark:bg-[#2d333a]">
-                            <a href="/Product" class="absolute inset-0 bg-center bg-no-repeat bg-cover transition-transform duration-500 group-hover:scale-110"
-                                data-alt="Mechanical gaming keyboard with RGB lighting"
-                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCd8c2vgb3ld8EXUbwZDTUkxqOJ2_mDExjd_Aw2jG7wi4ucEnB0B-g3L80NTYkuO47y6dzvTPnv7WpbQxxAsHia0X3qcWIcLDJxKtSNgfsJavG7rGprJHqujzMJRo1BcMzChJ9eVW8rue1vqWQdQpiAnD3euO--_j_dBxU2TvljnKrhGoCeuht0dNenR9jUQv04hRFl4FpT1Bj0jMh-8syRl0N8wLBiVoVnaYeO92eTW16nucppJzYen_wn8o4Uq1BzIAc85oWkiX0");'>
-                            </a>
-                            <span
-                                class="absolute top-3 left-3 px-2 py-1 bg-red-500 text-white text-[10px] font-bold rounded uppercase">Sale
-                                -20%</span>
-                        </div>
-                        <div class="p-5 space-y-4 flex flex-col flex-1">
-                            <div class="space-y-1">
-                                <h3 class="text-sm text-[#64748b] dark:text-white/50 font-medium">Logitech</h3>
-                                <p class="text-base font-bold text-[#111418] dark:text-white line-clamp-1">G Pro
-                                    Mechanical Keyboard</p>
-                            </div>
-                            <div class="mt-auto flex items-center justify-between gap-2">
-                                <div class="flex flex-col">
-                                    <span class="text-sm text-[#64748b] dark:text-white/50 line-through">$149.00</span>
-                                    <span class="text-xl font-black text-red-500">$119.00</span>
-                                </div>
-                                <button
-                                    class="flex size-10 items-center justify-center rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors">
-                                    <span class="material-symbols-outlined text-lg">add_shopping_cart</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <div class="flex items-center justify-between px-2 pt-10">
-                    <h2 class="text-[#111418] dark:text-white text-2xl font-black leading-tight tracking-tight">Trending
-                        Electronics</h2>
-                </div>
-                <section class="grid grid-cols-1 md:grid-cols-2 gap-6 pb-12">
-                    <div class="relative rounded-2xl overflow-hidden group h-[300px]">
-                        <a href="/Product" class="absolute inset-0 bg-center bg-no-repeat bg-cover transition-transform duration-700 group-hover:scale-105"
-                            data-alt="A collection of smart wearable devices"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBre0cz1DW-UZoAye3CI9q9EswEcv5VUmWeyYBTTxoUq8SMNbUCkgjvwh93vTkwhHh13lfw3RCOlgC8lzhgt78kfSIzzvyRfQXNOXPnkAI2PAkAxEftFahe78zJJo70RqWVfvRC-jrjheAAHeV-HYK9MaRj6esZ44VZq3_87w0DeWHIaAZcu2I0QfKsF4wKq0wvdOAXzWB2Q7aGmdDXBodydAfWtm9g5l91-W_54NW006smDjH0-WSHkvuC0tiqIGO4y77QlkeAJSo");'>
-                        </a>
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8">
-                            <h3 class="text-white text-2xl font-bold">Smart Wearables</h3>
-                            <p class="text-white/70 text-sm mb-4">Track your performance with precision.</p>
-                            <a class="w-fit bg-white text-black px-6 py-2 rounded-lg text-sm font-bold hover:bg-primary hover:text-white transition-all"
-                                href="#">Explore Category</a>
-                        </div>
-                    </div>
-                    <div class="relative rounded-2xl overflow-hidden group h-[300px]">
-                        <a href="/Product" class="absolute inset-0 bg-center bg-no-repeat bg-cover transition-transform duration-700 group-hover:scale-105"
-                            data-alt="A professional studio setup with monitor and speakers"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAlVMNvacm4viin-8fsq6y53yQV66L7J1dP9yeOannx9KPiG4KtKneOe4MlWN0p1R0Pf4z1Fb3VocjP10drkT_b7jxCAhOUlhoGRa8etIZ3jWmO5VSmzb4c9uRMkL9SxbJr8SDIkj-nT1_7I2bHbA-t7HTgG8ktTQQnBRf-C5RnQSYjF4OoDb253sf2biTW5-L84fD5joSyJolwCnDeQwiAU7C73a7wCGN0u_eVRTsR_1KkOMaJ-1-fWXzOGvIkp6ZG7Y_oMMcoYfg");'>
-                        </a>
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8">
-                            <h3 class="text-white text-2xl font-bold">Studio Setup</h3>
-                            <p class="text-white/70 text-sm mb-4">Professional gear for content creators.</p>
-                            <a class="w-fit bg-white text-black px-6 py-2 rounded-lg text-sm font-bold hover:bg-primary hover:text-white transition-all"
-                                href="#">Explore Category</a>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </section>
             </main>
 <?php require "src/Views/Includes/footer.php"; ?>

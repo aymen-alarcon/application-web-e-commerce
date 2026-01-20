@@ -1,3 +1,15 @@
+<?php
+    use App\config\DatabaseConnection;
+    use App\Models\User;
+
+    $db = new DatabaseConnection();
+    $conn = $db->establishConnection();
+
+    $handler = new  User($conn);
+    $handler->setId($_SESSION['id']);
+
+    $user = $handler->readById();
+?>
 <!DOCTYPE html>
 <html class="light" lang="en">
 <head>
@@ -98,8 +110,8 @@
                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuACtPkNoPTjXzMOJzPP1MmMLqiiFKxMqB5IweMBRrpJcl23MtQ8SGsO4QipkbxXywZQK-oAz3jV5hByyESgB7ejhLTU1VWyPHNU6rLIIOzYZ5phOrF3n5-slDn4zLHYDCnseu2cLi_XWOMxd-ptyKY_geDeRbHUR83AkV-SnKB99LCo-q_IF13zif798Xze1lr8BRrtMRjRvLJt23Snve0KbWPodt8eCohTf3UezTF5CL_E31f4cR52x456WcOKP1ZLVRS-54xBhsM" />
                     </div>
                     <div class="flex-1 min-w-0">
-                        <p class="text-sm font-semibold text-slate-900 dark:text-white truncate">Alex Rivera</p>
-                        <p class="text-xs text-slate-500 truncate">Super Admin</p>
+                        <p class="text-sm font-semibold text-slate-900 dark:text-white truncate"><?= $user->getFirst_name() . " " . $user->getLast_name() ?></p>
+                        <p class="text-xs text-slate-500 truncate">Admin</p>
                     </div>
                     <a href="/Logout" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
                         <span class="material-symbols-outlined text-[20px]">logout</span>

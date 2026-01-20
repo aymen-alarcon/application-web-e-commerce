@@ -1,21 +1,5 @@
 <?php require_once "src/Views/Includes/sidebar.php"; ?>
     <main class="ml-64 flex-1 overflow-y-auto flex flex-col">
-        <header
-            class="bg-white dark:bg-background-dark border-b border-slate-200 dark:border-slate-800 sticky top-0 z-10 px-8 py-4">
-            <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
-                <div>
-                    <h2 class="text-2xl font-black tracking-tight text-slate-900 dark:text-white">Order Management</h2>
-                    <p class="text-sm text-slate-500 dark:text-slate-400">Process and manage customer transactions</p>
-                </div>
-                <div class="flex items-center gap-3">
-                    <button
-                        class="flex items-center gap-2 px-4 h-10 bg-primary text-white rounded-lg text-sm font-bold hover:bg-primary/90 shadow-sm transition-all active:scale-95">
-                        <span class="material-symbols-outlined text-[18px]">add</span>
-                        Create Order
-                    </button>
-                </div>
-            </div>
-        </header>
         <div class="p-8 max-w-7xl mx-auto w-full space-y-6">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div

@@ -1,42 +1,5 @@
 <?php require "src/Views/Includes/sidebar.php"; ?>
         <main class="ml-64 flex-1 overflow-y-auto flex flex-col">
-            <header
-                class="sticky top-0 z-10 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 px-8 py-3 flex items-center justify-between">
-                <div class="flex items-center gap-4">
-                    <h2 class="text-[#111617] dark:text-white text-lg font-bold tracking-tight">Dashboard Overview</h2>
-                </div>
-                <div class="flex items-center gap-6">
-                    <div class="relative max-w-md hidden md:block">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <span class="material-symbols-outlined text-gray-400 text-[20px]">search</span>
-                        </div>
-                        <input
-                            class="block w-64 pl-10 pr-3 py-2 border-none bg-gray-100 dark:bg-gray-800 rounded-lg text-sm placeholder-gray-500 focus:ring-primary focus:ring-1"
-                            placeholder="Quick search..." type="text" />
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <button
-                            class="p-2 rounded-full text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 relative">
-                            <span class="material-symbols-outlined">notifications</span>
-                            <span
-                                class="absolute top-2 right-2.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-gray-900"></span>
-                        </button>
-                        <button class="p-2 rounded-full text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800">
-                            <span class="material-symbols-outlined">settings</span>
-                        </button>
-                    </div>
-                    <div class="flex items-center gap-3 pl-4 border-l border-gray-200 dark:border-gray-800">
-                        <div class="text-right hidden sm:block">
-                            <p class="text-xs font-semibold text-gray-900 dark:text-white">Alex Rivera</p>
-                            <p class="text-[10px] text-gray-500 uppercase tracking-wider">Super Admin</p>
-                        </div>
-                        <div class="size-9 rounded-full bg-cover bg-center border border-gray-200"
-                            data-alt="Admin user profile picture"
-                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDwOCOw5o7JyvYUZu3jkB82CmAZkByeI7yY4lnV5DZa1tTYMnXSZdCZxkkaZJsEQZwJbVRH8hZI8RVP0VfHEgwXcucEx1sYlpARMhFXrZsbpfRpvyJJ59-cWUfOdGvyMN7nWMQr78X98_xhw0P-7c3goLH5CfMc3sZIPPAQS33-w7uuWjqNzx_VU7UshCnvzQZcSGTg8ZtD7taX4COSEq-djI4JYGRB79T38Tk7VIx2ATR_FWp2kOuRYDwfg58pYZiGBhrG5xfjvgs")'>
-                        </div>
-                    </div>
-                </div>
-            </header>
             <div class="p-8 max-w-[1400px] w-full mx-auto space-y-8">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div

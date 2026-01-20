@@ -1,19 +1,5 @@
 <?php require "src/Views/Includes/sidebar.php"; ?>
 <main class="ml-64 flex-1 min-h-screen">
-    <header
-        class="bg-white dark:bg-background-dark border-b border-border-muted dark:border-gray-700 sticky top-0 z-40">
-        <div class="max-w-6xl mx-auto px-8 py-6 flex flex-wrap justify-between items-center gap-4">
-            <div>
-                <h2 class="text-3xl font-black text-[#141415] dark:text-white tracking-tight">Manage Users</h2>
-                <p class="text-sm text-[#71757a] mt-1">Control access and view registered customer accounts.</p>
-            </div>
-            <button
-                class="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-lg font-bold text-sm transition-all">
-                <span class="material-symbols-outlined text-sm">add</span>
-                Create New User
-            </button>
-        </div>
-    </header>
     <div class="max-w-6xl mx-auto px-8 py-8">
         <div class="mb-6">
             <div class="relative max-w-md">

@@ -17,8 +17,6 @@ class AuthController{
         $handler->setEmail($_POST["email"]);
         $handler->setPassword($_POST["password"]);
         $handler->loginUser();
-        header("Location: /Home");
-        exit;
     }
 
     function createUser(){

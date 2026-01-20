@@ -1,4 +1,11 @@
-<?php require "src/Views/Includes/header.php"; ?>
+<?php
+require "src/Views/Includes/header.php";
+    use App\Models\Product;
+
+    $handler = new Product($conn);
+    $handler->setId($_GET["id"]);
+    $product = $handler->readById();
+?>
     <main class="max-w-[1280px] mx-auto px-6 py-8">
         <nav class="flex items-center gap-2 text-sm text-slate-500 mb-8">
             <a class="hover:text-primary" href="/Home">Home</a>
@@ -47,38 +54,20 @@
             </div>
             <div class="lg:col-span-5 flex flex-col">
                 <div class="flex flex-col gap-2 mb-4">
-                    <span class="text-primary font-bold tracking-widest text-xs uppercase">Premium Series</span>
-                    <h1 class="text-3xl font-bold leading-tight">Quantum X1 Ultra-Wide 34" Curved Monitor</h1>
-                </div>
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="flex items-center gap-1 text-amber-500">
-                        <span class="material-symbols-outlined filled-star text-sm">star</span>
-                        <span class="material-symbols-outlined filled-star text-sm">star</span>
-                        <span class="material-symbols-outlined filled-star text-sm">star</span>
-                        <span class="material-symbols-outlined filled-star text-sm">star</span>
-                        <span class="material-symbols-outlined text-sm">star_half</span>
-                        <span class="ml-1 text-slate-900 dark:text-white font-bold text-sm">4.8</span>
-                    </div>
-                    <span class="text-slate-400">|</span>
-                    <a class="text-sm text-slate-500 hover:text-primary underline underline-offset-4" href="#">124
-                        reviews</a>
+                    <h1 class="text-3xl font-bold leading-tight"><?= $product->getName() ?></h1>
                 </div>
                 <div
                     class="mb-8 p-6 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800">
                     <div class="flex items-baseline gap-2 mb-2">
-                        <span class="text-4xl font-black text-slate-900 dark:text-white">$899.00</span>
-                        <span class="text-lg text-slate-400 line-through">$1,199.00</span>
+                        <span class="text-4xl font-black text-slate-900 dark:text-white">$<?= $product->getPrice() ?></span>
+                        <span class="text-lg text-slate-400 line-through">$<?= $product->getPrice() ?></span>
                     </div>
                     <div class="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-semibold text-sm">
                         <span class="material-symbols-outlined text-sm">check_circle</span>
-                        In Stock - Ready to Ship
+                        <?php if($product->getStock() > 0){echo "In Stock - Ready to Ship";}else{ echo "Out Of Stock";} ?>
                     </div>
                 </div>
-                <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
-                    Experience cinematic immersion with the Quantum X1. Featuring a 1500R curvature and Ultra-WQHD
-                    resolution, this monitor delivers breathtaking visuals and unparalleled workspace productivity.
-                    Designed for creators and elite gamers alike.
-                </p>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-8"><?= $product->getDescription() ?></p>
                 <div class="flex flex-col gap-6 mt-auto">
                     <div class="flex items-center gap-4">
                         <div class="flex items-center h-12 rounded-lg bg-slate-100 dark:bg-slate-800 p-1">
