@@ -45,4 +45,10 @@
             $roles = $handler->read();
             return $roles;
         }
+
+        function fetchCategoryById(){
+            $handler = new Product($this->conn);
+            $products = $handler->readById();
+            return $products;
+        }
     }

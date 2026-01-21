@@ -47,6 +47,30 @@ class Role{
         $this->role_name = $role_name;
     }
 
+    function create(){
+        $sql = "INSERT INTO roles (role_name, permission) VALUES (:role_name, :permission)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(":role_name", $this->getRole_name());
+        $stmt->bindValue(":permission", $this->getPermission());
+        $stmt->execute();
+    }
+
+    function update(){
+        $sql = "UPDATE roles SET role_name = COALESCE(:role_name, role_name), permission = COALESCE(:permission, permission) WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(":id", $this->getId());
+        $stmt->bindValue(":role_name", $this->getRole_name());
+        $stmt->bindValue(":permission", $this->getPermission());
+        $stmt->execute();
+    }
+
+    function delete(){
+        $sql = "DELETE FROM roles WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(":id", $this->getId());
+        $stmt->execute();
+    }
+
     function read(){
         $sql = "SELECT * FROM roles";
         $stmt = $this->conn->prepare($sql);

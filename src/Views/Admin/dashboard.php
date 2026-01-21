@@ -100,7 +100,7 @@
                     </div>
                     <div
                         class="px-6 py-4 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between text-sm text-gray-500">
-                        <p>Showing 5 of 1,240 results</p>
+                        <p>Showing 5 of <?= count($orders) ?> results</p>
                         <div class="flex gap-1">
                             <button class="p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-50"
                                 disabled="">

@@ -13,8 +13,9 @@ class Product{
     private ?float $price;
     private ?int $stock;
     private ?int $category_id;
+    private ?string $category_name;
 
-    public function __construct($conn = NULL, ?int $id = null, ?string $name = "", ?string $description = "", ?float $price = 0.0, ?int $stock = 0, ?int $category_id = NULL) 
+    public function __construct($conn = NULL, ?int $id = null, ?string $name = "", ?string $description = "", ?float $price = 0.0, ?int $stock = 0, ?int $category_id = NULL, ?string $category_name = NULL) 
     {
         $this->conn = $conn;
         $this->id = $id;
@@ -23,6 +24,7 @@ class Product{
         $this->price = $price;
         $this->stock = $stock;
         $this->category_id = $category_id;
+        $this->category_name = $category_name;
     }
 
 
@@ -86,8 +88,48 @@ class Product{
         $this->category_id = $category_id;
     }
 
+    public function getCategory_name()
+    {
+        return $this->category_name;
+    }
+
+    public function setCategory_name($category_name)
+    {
+        $this->category_name = $category_name;
+    }
+
+    function create(){
+        $sql = "INSERT INTO products (name, description, price, stock, category_id)VALUES (:name, :description, price, stock, category_id)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(":name", $this->getName());
+        $stmt->bindValue(":description", $this->getDescription());
+        $stmt->bindValue(":price", $this->getPrice());
+        $stmt->bindValue(":stock", $this->getStock());
+        $stmt->bindValue(":category_id", $this->getCategory_id());
+        $stmt->execute();
+    }
+
+    function update(){
+        $sql = "UPDATE products SET name = COALESCE(:name, name), description = COALESCE(:description, description), price = COALESCE(:price, price), stock = COALESCE(:stock, stock), category_id = COALESCE(:category_id, category_id) WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(":id", $this->getId());
+        $stmt->bindValue(":name", $this->getName());
+        $stmt->bindValue(":description", $this->getDescription());
+        $stmt->bindValue(":price", $this->getPrice());
+        $stmt->bindValue(":stock", $this->getStock());
+        $stmt->bindValue(":category_id", $this->getCategory_id());
+        $stmt->execute();
+    }
+
+    function delete(){
+        $sql = "DELETE FROM products WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(":id", $this->getId());
+        $stmt->execute();
+    }
+
     function readById(){
-        $sql = "SELECT * FROM products WHERE id = :id";
+        $sql = "SELECT p.*, c.name AS category_name FROM products p LEFT JOIN categories c ON c.id = p.category_id WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(":id", $this->getId());
         $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, self::class);

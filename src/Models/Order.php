@@ -96,6 +96,32 @@ class Order{
         $this->email = $email;
     }
 
+    function create(){
+        $sql = "INSERT INTO orders (title, description, created_at, user_id)VALUES (:title, :description, now(), user_id)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(":title", $this->getTitle());
+        $stmt->bindValue(":description", $this->getDescription());
+        $stmt->bindValue(":user_id", $this->getUser_id());
+        $stmt->execute();
+    }
+
+    function update(){
+        $sql = "UPDATE orders SET title = COALESCE(:title, title), description = COALESCE(:description, description), user_id = COALESCE(:user_id, user_id) WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(":id", $this->getId());
+        $stmt->bindValue(":title", $this->getTitle());
+        $stmt->bindValue(":description", $this->getDescription());
+        $stmt->bindValue(":user_id", $this->getUser_id());
+        $stmt->execute();
+    }
+
+    function delete(){
+        $sql = "DELETE FROM orders WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(":id", $this->getId());
+        $stmt->execute();
+    }
+
     function read(){
         $sql = "SELECT o.*, u.first_name, u.last_name, u.email FROM orders o LEFT JOIN users u ON o.user_id = u.id";
         $stmt = $this->conn->prepare($sql);

@@ -27,6 +27,7 @@ $routing->get("/Admin/Dashboard", [$viewsController, "adminDashboardPage"]);
 $routing->get("/Admin/Categories", [$viewsController, "adminCategoryDashboardPage"]);
 $routing->get("/Admin/Orders", [$viewsController, "adminOrderDashboardPage"]);
 $routing->get("/Admin/Users", [$viewsController, "adminUserDashboardPage"]);
+$routing->get("/Admin/Products", [$viewsController, "adminProductDashboardPage"]);
 $routing->post("/loginProcess", [$authController, "loginUser"]);
 $routing->post("/registerProcess", [$authController, "createUser"]);
 

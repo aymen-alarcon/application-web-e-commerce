@@ -49,6 +49,30 @@ class Category{
         $this->name = $name;
     }
 
+    function create(){
+        $sql = "INSERT INTO categories (name, description) VALUES (:name, :description)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(":name", $this->getName());
+        $stmt->bindValue(":description", $this->getDescription());
+        $stmt->execute();
+    }
+
+    function update(){
+        $sql = "UPDATE categories SET name = COALESCE(:name, name), description = COALESCE(:description, description) WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(":id", $this->getId());
+        $stmt->bindValue(":name", $this->getName());
+        $stmt->bindValue(":description", $this->getDescription());
+        $stmt->execute();
+    }
+
+    function delete(){
+        $sql = "DELETE FROM categories WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(":id", $this->getId());
+        $stmt->execute();
+    }
+
     public function read(){
         $sql = "SELECT * FROM categories";
         $stmt = $this->conn->prepare($sql);

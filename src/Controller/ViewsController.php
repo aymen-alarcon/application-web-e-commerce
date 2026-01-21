@@ -44,6 +44,10 @@ class ViewsController{
         require __DIR__ . '/../views/Admin/Order_dashboard.php';
     }
 
+    public function adminProductDashboardPage(){
+        require __DIR__ . '/../views/Admin/Product_dashboard.php';
+    }
+
     public function notFoundPage(){
         require __DIR__ . '/../views/404.html';
     }
