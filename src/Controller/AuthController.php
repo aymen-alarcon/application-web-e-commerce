@@ -2,7 +2,6 @@
 namespace App\Controller;
 
 use App\Models\User;
-use App\Service\UserService;
 use PDO;
 
 class AuthController{
