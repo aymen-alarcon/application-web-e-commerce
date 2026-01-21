@@ -3,8 +3,6 @@
             <div class="flex items-center gap-2 mb-2 text-sm">
                 <a class="text-slate-500 hover:text-primary transition-colors" href="#">Admin</a>
                 <span class="text-slate-400 select-none">/</span>
-                <a class="text-slate-500 hover:text-primary transition-colors" href="#">Catalog</a>
-                <span class="text-slate-400 select-none">/</span>
                 <span class="text-slate-900 dark:text-white font-semibold">Categories</span>
             </div>
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
@@ -96,41 +94,45 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
-                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors group">
-                                <td class="px-6 py-5 text-sm text-slate-500 dark:text-slate-400 font-mono">#001</td>
-                                <td class="px-6 py-5">
-                                    <div class="flex items-center gap-3">
-                                        <div
-                                            class="size-8 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400">
-                                            <span class="material-symbols-outlined text-[20px]">smartphone</span>
-                                        </div>
-                                        <span class="text-sm font-semibold text-slate-900 dark:text-white">Mobile
-                                            Phones</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-5 text-sm text-slate-500 dark:text-slate-400 max-w-xs truncate">
-                                    Latest smartphones and accessories for all brands</td>
-                                <td class="px-6 py-5">
-                                    <span
-                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200">
-                                        210 products
-                                    </span>
-                                </td>
-                                <td class="px-6 py-5 text-right">
-                                    <div class="flex items-center justify-end gap-2">
-                                        <button
-                                            class="p-2 text-slate-400 hover:text-primary hover:bg-primary/10 rounded-lg transition-all"
-                                            title="Edit">
-                                            <span class="material-symbols-outlined text-[20px]">edit</span>
-                                        </button>
-                                        <button
-                                            class="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-lg transition-all"
-                                            title="Delete">
-                                            <span class="material-symbols-outlined text-[20px]">delete</span>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
+                            <?php if(count($categories) > 0): ?>
+                                <?php foreach($categories as $category): ?>
+                                    <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors group">
+                                        <td class="px-6 py-5 text-sm text-slate-500 dark:text-slate-400 font-mono">#00<?= $category->getId() ?></td>
+                                        <td class="px-6 py-5">
+                                            <div class="flex items-center gap-3">
+                                                <div
+                                                    class="size-8 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400">
+                                                    <span class="material-symbols-outlined text-[20px]">smartphone</span>
+                                                </div>
+                                                <span class="text-sm font-semibold text-slate-900 dark:text-white"><?= $category->getName() ?></span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-5 text-sm text-slate-500 dark:text-slate-400 max-w-xs truncate"><?= $category->getDescription() ?></td>
+                                        <td class="px-6 py-5">
+                                            <span
+                                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200">
+                                                210 products
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-5 text-right">
+                                            <div class="flex items-center justify-end gap-2">
+                                                <button
+                                                    class="p-2 text-slate-400 hover:text-primary hover:bg-primary/10 rounded-lg transition-all"
+                                                    title="Edit">
+                                                    <span class="material-symbols-outlined text-[20px]">edit</span>
+                                                </button>
+                                                <button
+                                                    class="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-lg transition-all"
+                                                    title="Delete">
+                                                    <span class="material-symbols-outlined text-[20px]">delete</span>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-gray-100">There are no orders Yet</td>
+                                <?php endif; ?>
                             <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors group">
                                 <td class="px-6 py-5 text-sm text-slate-500 dark:text-slate-400 font-mono">#002</td>
                                 <td class="px-6 py-5">

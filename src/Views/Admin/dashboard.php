@@ -12,7 +12,7 @@
                                 class="text-xs font-medium text-green-600 bg-green-50 dark:bg-green-900/30 px-2 py-1 rounded">+12%</span>
                         </div>
                         <p class="text-gray-500 dark:text-gray-400 text-sm font-medium">Total Users</p>
-                        <p class="text-2xl font-bold text-[#111617] dark:text-white mt-1">1,250</p>
+                        <p class="text-2xl font-bold text-[#111617] dark:text-white mt-1"><?= count($users) ?></p>
                     </div>
                     <div
                         class="bg-white dark:bg-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm">
@@ -24,8 +24,8 @@
                             <span
                                 class="text-xs font-medium text-red-600 bg-red-50 dark:bg-red-900/30 px-2 py-1 rounded">-5%</span>
                         </div>
-                        <p class="text-gray-500 dark:text-gray-400 text-sm font-medium">Total Revenue</p>
-                        <p class="text-2xl font-bold text-[#111617] dark:text-white mt-1">$45,200.00</p>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm font-medium">Total Roles</p>
+                        <p class="text-2xl font-bold text-[#111617] dark:text-white mt-1"><?= count($roles) ?></p>
                     </div>
                     <div
                         class="bg-white dark:bg-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm">
@@ -38,7 +38,7 @@
                                 class="text-xs font-medium text-green-600 bg-green-50 dark:bg-green-900/30 px-2 py-1 rounded">+2%</span>
                         </div>
                         <p class="text-gray-500 dark:text-gray-400 text-sm font-medium">Total Products</p>
-                        <p class="text-2xl font-bold text-[#111617] dark:text-white mt-1">320</p>
+                        <p class="text-2xl font-bold text-[#111617] dark:text-white mt-1"><?= count($products) ?></p>
                     </div>
                     <div
                         class="bg-white dark:bg-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm">
@@ -51,7 +51,7 @@
                                 class="text-xs font-medium text-green-600 bg-green-50 dark:bg-green-900/30 px-2 py-1 rounded">+8%</span>
                         </div>
                         <p class="text-gray-500 dark:text-gray-400 text-sm font-medium">Pending Orders</p>
-                        <p class="text-2xl font-bold text-[#111617] dark:text-white mt-1">14</p>
+                        <p class="text-2xl font-bold text-[#111617] dark:text-white mt-1"><?= count($orders) ?></p>
                     </div>
                 </div>
                 <div
@@ -62,122 +62,38 @@
                             <p class="text-sm text-gray-500 dark:text-gray-400">Overview of the last 10 orders
                                 processed.</p>
                         </div>
-                        <button
-                            class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-50 transition-colors">View
-                            All Orders</button>
+                        <a href="/Admin/Orders" class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-50 transition-colors">View
+                            All Orders
+                        </a>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse">
                             <thead>
                                 <tr class="bg-gray-50 dark:bg-gray-800/50">
-                                    <th
-                                        class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                                        Order ID</th>
-                                    <th
-                                        class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                                        Customer</th>
-                                    <th
-                                        class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                                        Date</th>
-                                    <th
-                                        class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                                        Total</th>
-                                    <th
-                                        class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                                        Status</th>
-                                    <th
-                                        class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                                        Actions</th>
+                                    <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">Order ID</th>
+                                    <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">Customer</th>
+                                    <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">Date</th>
+                                    <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">Total</th>
+                                    <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">Actions</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
                                 <tr class="hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors">
-                                    <td class="px-6 py-4 text-sm font-semibold text-primary">#ORD-1024</td>
-                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-gray-100">John Doe
-                                    </td>
-                                    <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">Oct 24, 2023</td>
-                                    <td class="px-6 py-4 text-sm font-bold text-gray-900 dark:text-gray-100">$124.50
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="status-processing inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold">
-                                            Processing
-                                        </span>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <button class="text-gray-400 hover:text-primary"><span
-                                                class="material-symbols-outlined text-[18px]">more_vert</span></button>
-                                    </td>
-                                </tr>
-                                <tr class="hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors">
-                                    <td class="px-6 py-4 text-sm font-semibold text-primary">#ORD-1023</td>
-                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-gray-100">Jane
-                                        Smith</td>
-                                    <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">Oct 23, 2023</td>
-                                    <td class="px-6 py-4 text-sm font-bold text-gray-900 dark:text-gray-100">$89.00</td>
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="status-shipped inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold">
-                                            Shipped
-                                        </span>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <button class="text-gray-400 hover:text-primary"><span
-                                                class="material-symbols-outlined text-[18px]">more_vert</span></button>
-                                    </td>
-                                </tr>
-                                <tr class="hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors">
-                                    <td class="px-6 py-4 text-sm font-semibold text-primary">#ORD-1022</td>
-                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-gray-100">Robert
-                                        Brown</td>
-                                    <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">Oct 22, 2023</td>
-                                    <td class="px-6 py-4 text-sm font-bold text-gray-900 dark:text-gray-100">$210.00
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="status-delivered inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold">
-                                            Delivered
-                                        </span>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <button class="text-gray-400 hover:text-primary"><span
-                                                class="material-symbols-outlined text-[18px]">more_vert</span></button>
-                                    </td>
-                                </tr>
-                                <tr class="hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors">
-                                    <td class="px-6 py-4 text-sm font-semibold text-primary">#ORD-1021</td>
-                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-gray-100">Emily
-                                        Davis</td>
-                                    <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">Oct 22, 2023</td>
-                                    <td class="px-6 py-4 text-sm font-bold text-gray-900 dark:text-gray-100">$45.20</td>
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="status-processing inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold">
-                                            Processing
-                                        </span>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <button class="text-gray-400 hover:text-primary"><span
-                                                class="material-symbols-outlined text-[18px]">more_vert</span></button>
-                                    </td>
-                                </tr>
-                                <tr class="hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors">
-                                    <td class="px-6 py-4 text-sm font-semibold text-primary">#ORD-1020</td>
-                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-gray-100">Michael
-                                        Wilson</td>
-                                    <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">Oct 21, 2023</td>
-                                    <td class="px-6 py-4 text-sm font-bold text-gray-900 dark:text-gray-100">$312.00
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <span
-                                            class="status-shipped inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold">
-                                            Shipped
-                                        </span>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <button class="text-gray-400 hover:text-primary"><span
-                                                class="material-symbols-outlined text-[18px]">more_vert</span></button>
-                                    </td>
+                                    <?php if(count($orders) > 0): ?>
+                                        <?php foreach($orders as $order): ?>
+                                            <td class="px-6 py-4 text-sm font-semibold text-primary"><?= $order->getId() ?></td>
+                                            <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-gray-100"><?= $order->getFirst_name() . " " . $order->getLast_name() ?></td>
+                                            <td class="px-6 py-4 text-sm text-gray-500 dark:text-gray-400"><?= $order->getCreated_at() ?></td>
+                                            <td class="px-6 py-4 text-sm font-bold text-gray-900 dark:text-gray-100">$124.50</td>
+                                            <td class="px-6 py-4">
+                                                <button class="text-gray-400 hover:text-primary">
+                                                    <span class="material-symbols-outlined text-[18px]">more_vert</span>
+                                                </button>
+                                            </td>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-gray-100">There are no orders Yet</td>
+                                    <?php endif; ?>
                                 </tr>
                             </tbody>
                         </table>

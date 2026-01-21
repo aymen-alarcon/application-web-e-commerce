@@ -1,16 +1,12 @@
 <?php
-
     namespace App\Service;
 
-    use App\config\DatabaseConnection;
     use App\Models\Category;
     use App\Models\Order;
     use App\Models\Product;
     use App\Models\Role;
     use App\Models\User;
     use PDO;
-
-    $pdo = DatabaseConnection::getInstance()->getConnection();
 
     class UserService{
         private ?PDO $conn;
@@ -26,7 +22,7 @@
             return $categories;
         }
 
-        function fetchProduct(){
+        function fetchProducts(){
             $handler = new Product($this->conn);
             $products = $handler->read();
             return $products;

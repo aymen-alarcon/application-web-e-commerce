@@ -31,133 +31,37 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-border-muted dark:divide-gray-700">
-                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors">
-                            <td class="px-6 py-4 text-sm font-medium text-[#71757a]">#001</td>
-                            <td class="px-6 py-4">
-                                <div class="size-9 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-700 dark:text-blue-300 font-bold text-xs"
-                                    data-alt="User initials placeholder for Jane Doe">JD</div>
-                            </td>
-                            <td class="px-6 py-4 text-sm font-semibold text-[#141415] dark:text-white">Jane Doe</td>
-                            <td class="px-6 py-4 text-sm text-[#71757a]">jane.doe@example.com</td>
-                            <td class="px-6 py-4">
-                                <span
-                                    class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-primary/10 text-primary border border-primary/20">Admin</span>
-                            </td>
-                            <td class="px-6 py-4">
-                                <span
-                                    class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-400 border border-green-200 dark:border-green-800">Active</span>
-                            </td>
-                            <td class="px-6 py-4 text-right">
-                                <div class="flex justify-end gap-3">
-                                    <button
-                                        class="text-primary hover:text-primary/70 font-bold text-xs uppercase tracking-tight">Edit</button>
-                                    <button
-                                        class="text-red-600 hover:text-red-400 font-bold text-xs uppercase tracking-tight">Delete</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors">
-                            <td class="px-6 py-4 text-sm font-medium text-[#71757a]">#002</td>
-                            <td class="px-6 py-4">
-                                <div class="size-9 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center text-orange-700 dark:text-orange-300 font-bold text-xs"
-                                    data-alt="User initials placeholder for Bob Smith">BS</div>
-                            </td>
-                            <td class="px-6 py-4 text-sm font-semibold text-[#141415] dark:text-white">Bob Smith</td>
-                            <td class="px-6 py-4 text-sm text-[#71757a]">bob.smith@cloudmail.net</td>
-                            <td class="px-6 py-4">
-                                <span
-                                    class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600">User</span>
-                            </td>
-                            <td class="px-6 py-4">
-                                <span
-                                    class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-red-100 text-red-700 dark:bg-red-900/20 dark:text-red-400 border border-red-200 dark:border-red-800">Suspended</span>
-                            </td>
-                            <td class="px-6 py-4 text-right">
-                                <div class="flex justify-end gap-3">
-                                    <button
-                                        class="text-primary hover:text-primary/70 font-bold text-xs uppercase tracking-tight">Edit</button>
-                                    <button
-                                        class="text-red-600 hover:text-red-400 font-bold text-xs uppercase tracking-tight">Delete</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors">
-                            <td class="px-6 py-4 text-sm font-medium text-[#71757a]">#003</td>
-                            <td class="px-6 py-4">
-                                <div class="size-9 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center text-purple-700 dark:text-purple-300 font-bold text-xs"
-                                    data-alt="User initials placeholder for Alice J.">AJ</div>
-                            </td>
-                            <td class="px-6 py-4 text-sm font-semibold text-[#141415] dark:text-white">Alice Johnson
-                            </td>
-                            <td class="px-6 py-4 text-sm text-[#71757a]">ajohnson@provider.com</td>
-                            <td class="px-6 py-4">
-                                <span
-                                    class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600">User</span>
-                            </td>
-                            <td class="px-6 py-4">
-                                <span
-                                    class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-400 border border-green-200 dark:border-green-800">Active</span>
-                            </td>
-                            <td class="px-6 py-4 text-right">
-                                <div class="flex justify-end gap-3">
-                                    <button
-                                        class="text-primary hover:text-primary/70 font-bold text-xs uppercase tracking-tight">Edit</button>
-                                    <button
-                                        class="text-red-600 hover:text-red-400 font-bold text-xs uppercase tracking-tight">Delete</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors">
-                            <td class="px-6 py-4 text-sm font-medium text-[#71757a]">#004</td>
-                            <td class="px-6 py-4">
-                                <div class="size-9 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-700 dark:text-green-300 font-bold text-xs"
-                                    data-alt="User initials placeholder for Charlie B.">CB</div>
-                            </td>
-                            <td class="px-6 py-4 text-sm font-semibold text-[#141415] dark:text-white">Charlie Brown
-                            </td>
-                            <td class="px-6 py-4 text-sm text-[#71757a]">charlie.brown@peanuts.org</td>
-                            <td class="px-6 py-4">
-                                <span
-                                    class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600">User</span>
-                            </td>
-                            <td class="px-6 py-4">
-                                <span
-                                    class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-400 border border-green-200 dark:border-green-800">Active</span>
-                            </td>
-                            <td class="px-6 py-4 text-right">
-                                <div class="flex justify-end gap-3">
-                                    <button
-                                        class="text-primary hover:text-primary/70 font-bold text-xs uppercase tracking-tight">Edit</button>
-                                    <button
-                                        class="text-red-600 hover:text-red-400 font-bold text-xs uppercase tracking-tight">Delete</button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors">
-                            <td class="px-6 py-4 text-sm font-medium text-[#71757a]">#005</td>
-                            <td class="px-6 py-4">
-                                <div class="size-9 rounded-full bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center text-pink-700 dark:text-pink-300 font-bold text-xs"
-                                    data-alt="User initials placeholder for Sarah M.">SM</div>
-                            </td>
-                            <td class="px-6 py-4 text-sm font-semibold text-[#141415] dark:text-white">Sarah Miller</td>
-                            <td class="px-6 py-4 text-sm text-[#71757a]">smiller.ux@studio.com</td>
-                            <td class="px-6 py-4">
-                                <span
-                                    class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-primary/10 text-primary border border-primary/20">Admin</span>
-                            </td>
-                            <td class="px-6 py-4">
-                                <span
-                                    class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-400 border border-green-200 dark:border-green-800">Active</span>
-                            </td>
-                            <td class="px-6 py-4 text-right">
-                                <div class="flex justify-end gap-3">
-                                    <button
-                                        class="text-primary hover:text-primary/70 font-bold text-xs uppercase tracking-tight">Edit</button>
-                                    <button
-                                        class="text-red-600 hover:text-red-400 font-bold text-xs uppercase tracking-tight">Delete</button>
-                                </div>
-                            </td>
-                        </tr>
+                        <?php if(count($users) > 0): ?>
+                            <?php foreach($users as $user): ?>
+                                <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors">
+                                    <td class="px-6 py-4 text-sm font-medium text-[#71757a]">#00<?= $user->getId() ?></td>
+                                    <td class="px-6 py-4">
+                                        <div class="size-9 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-700 dark:text-blue-300 font-bold text-xs"
+                                            data-alt="User initials placeholder for Jane Doe">JD</div>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm font-semibold text-[#141415] dark:text-white"><?= $user->getFirst_name() . " " . $user->getLast_name() ?></td>
+                                    <td class="px-6 py-4 text-sm text-[#71757a]"><?= $user->getEmail() ?></td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-primary/10 text-primary border border-primary/20"><?php if($user->getRole_id() === 2){echo "Admin";}else{echo "User";} ?></span>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <span
+                                            class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-green-100 text-green-700 dark:bg-green-900/20 dark:text-green-400 border border-green-200 dark:border-green-800">Active</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-right">
+                                        <div class="flex justify-end gap-3">
+                                            <button
+                                                class="text-primary hover:text-primary/70 font-bold text-xs uppercase tracking-tight">Edit</button>
+                                            <button
+                                                class="text-red-600 hover:text-red-400 font-bold text-xs uppercase tracking-tight">Delete</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-gray-100">There are no orders Yet</td>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>

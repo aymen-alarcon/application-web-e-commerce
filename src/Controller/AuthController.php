@@ -19,16 +19,17 @@ class AuthController{
         $handler->setPassword($_POST["password"]);
         $user = $handler->authenticate();
 
+        
+        if (!$user) {
+            header("Location: /login?error=invalid");
+            exit;
+        }
+
+
         $_SESSION["id"] = $user->getId();
         $_SESSION["role_id"] = $user->getRole_id();
 
         if ($user->getRole_id() === 1) {
-            $service = new UserService();
-            $service->fetchCategories();
-            $service->fetchOrders();
-            $service->fetchProduct();
-            $service->fetchRoles();
-            $service->fetchUsers();
             header("Location: /Admin/Dashboard");
         } else {
             header("Location: /Home");

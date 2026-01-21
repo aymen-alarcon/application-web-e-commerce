@@ -10,7 +10,7 @@
                         <span
                             class="flex items-center text-xs font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-950/30 px-2 py-0.5 rounded-full">+12%</span>
                     </div>
-                    <p class="text-3xl font-black text-slate-900 dark:text-white">1,284</p>
+                    <p class="text-3xl font-black text-slate-900 dark:text-white"><?= count($orders) ?></p>
                     <p class="text-xs text-slate-400 mt-2 flex items-center gap-1">
                         <span class="material-symbols-outlined text-[14px]">history</span>
                         vs. last 30 days
@@ -26,17 +26,6 @@
                     </div>
                     <p class="text-3xl font-black text-slate-900 dark:text-white">42</p>
                     <p class="text-xs text-slate-400 mt-2">Critical attention required</p>
-                </div>
-                <div
-                    class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-xl flex flex-col gap-1">
-                    <div class="flex justify-between items-start">
-                        <p class="text-sm font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Daily
-                            Revenue</p>
-                        <span
-                            class="flex items-center text-xs font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-950/30 px-2 py-0.5 rounded-full">+18%</span>
-                    </div>
-                    <p class="text-3xl font-black text-slate-900 dark:text-white">$12,450.00</p>
-                    <p class="text-xs text-slate-400 mt-2">Peak hour: 14:00 - 16:00</p>
                 </div>
             </div>
             <div
@@ -101,145 +90,44 @@
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
-                            <tr
-                                class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors cursor-default group">
-                                <td class="px-6 py-4">
-                                    <span class="font-bold text-slate-900 dark:text-white">#ORD-9942</span>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Oct 24, 2023</td>
-                                <td class="px-6 py-4">
-                                    <div class="flex flex-col">
-                                        <span class="text-sm font-semibold text-slate-900 dark:text-white">James
-                                            Wilson</span>
-                                        <span class="text-xs text-slate-500">james.w@example.com</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 font-bold text-slate-900 dark:text-white">$1,299.00</td>
-                                <td class="px-6 py-4">
-                                    <span
-                                        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">
-                                        <span class="size-1.5 rounded-full bg-emerald-500"></span>
-                                        Paid
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span
-                                        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">
-                                        Shipped
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-right">
-                                    <button
-                                        class="p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors inline-flex items-center justify-center">
-                                        <span
-                                            class="material-symbols-outlined text-[20px] text-slate-400 group-hover:text-primary">visibility</span>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr
-                                class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors cursor-default group">
-                                <td class="px-6 py-4">
-                                    <span class="font-bold text-slate-900 dark:text-white">#ORD-9941</span>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Oct 24, 2023</td>
-                                <td class="px-6 py-4">
-                                    <div class="flex flex-col">
-                                        <span class="text-sm font-semibold text-slate-900 dark:text-white">Sarah
-                                            Chen</span>
-                                        <span class="text-xs text-slate-500">schen_dev@gmail.com</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 font-bold text-slate-900 dark:text-white">$450.50</td>
-                                <td class="px-6 py-4">
-                                    <span
-                                        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400">
-                                        <span class="size-1.5 rounded-full bg-amber-500"></span>
-                                        Pending
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span
-                                        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">
-                                        Unfulfilled
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-right">
-                                    <button
-                                        class="p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors inline-flex items-center justify-center">
-                                        <span
-                                            class="material-symbols-outlined text-[20px] text-slate-400 group-hover:text-primary">visibility</span>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr
-                                class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors cursor-default group">
-                                <td class="px-6 py-4">
-                                    <span class="font-bold text-slate-900 dark:text-white">#ORD-9940</span>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Oct 23, 2023</td>
-                                <td class="px-6 py-4">
-                                    <div class="flex flex-col">
-                                        <span class="text-sm font-semibold text-slate-900 dark:text-white">Michael
-                                            Jordan</span>
-                                        <span class="text-xs text-slate-500">mj@bulls.com</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 font-bold text-slate-900 dark:text-white">$2,400.00</td>
-                                <td class="px-6 py-4">
-                                    <span
-                                        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">
-                                        <span class="size-1.5 rounded-full bg-emerald-500"></span>
-                                        Paid
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span
-                                        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-400">
-                                        Delivered
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-right">
-                                    <button
-                                        class="p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors inline-flex items-center justify-center">
-                                        <span
-                                            class="material-symbols-outlined text-[20px] text-slate-400 group-hover:text-primary">visibility</span>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr
-                                class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors cursor-default group">
-                                <td class="px-6 py-4">
-                                    <span class="font-bold text-slate-900 dark:text-white">#ORD-9939</span>
-                                </td>
-                                <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">Oct 23, 2023</td>
-                                <td class="px-6 py-4">
-                                    <div class="flex flex-col">
-                                        <span class="text-sm font-semibold text-slate-900 dark:text-white">Elena
-                                            Rossi</span>
-                                        <span class="text-xs text-slate-500">elena.r@agency.it</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 font-bold text-slate-900 dark:text-white">$89.00</td>
-                                <td class="px-6 py-4">
-                                    <span
-                                        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400">
-                                        <span class="size-1.5 rounded-full bg-rose-500"></span>
-                                        Refunded
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4">
-                                    <span
-                                        class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400">
-                                        Cancelled
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 text-right">
-                                    <button
-                                        class="p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors inline-flex items-center justify-center">
-                                        <span
-                                            class="material-symbols-outlined text-[20px] text-slate-400 group-hover:text-primary">visibility</span>
-                                    </button>
-                                </td>
+                            <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors cursor-default group">
+                                <?php if(count($orders) > 0): ?>
+                                    <?php foreach($orders as $order): ?>
+                                        <td class="px-6 py-4">
+                                            <span class="font-bold text-slate-900 dark:text-white">#ORD-<?= $order->getId() ?></span>
+                                        </td>
+                                        <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400"><?= $order->getCreated_at() ?></td>
+                                        <td class="px-6 py-4">
+                                            <div class="flex flex-col">
+                                                <span class="text-sm font-semibold text-slate-900 dark:text-white"><?= $order->getFirst_name() . " " . $order->getLast_name() ?></span>
+                                                <span class="text-xs text-slate-500"><?= $order->getEmail() ?></span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 font-bold text-slate-900 dark:text-white">$1,299.00</td>
+                                        <td class="px-6 py-4">
+                                            <span
+                                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400">
+                                                <span class="size-1.5 rounded-full bg-emerald-500"></span>
+                                                Paid
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <span
+                                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">
+                                                Shipped
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 text-right">
+                                            <button
+                                                class="p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors inline-flex items-center justify-center">
+                                                <span
+                                                    class="material-symbols-outlined text-[20px] text-slate-400 group-hover:text-primary">visibility</span>
+                                            </button>
+                                        </td>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <td class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-gray-100">There are no orders Yet</td>
+                                <?php endif; ?>
                             </tr>
                         </tbody>
                     </table>
@@ -249,7 +137,7 @@
                     <p class="text-sm text-slate-500 dark:text-slate-400">Showing <span
                             class="font-semibold text-slate-900 dark:text-white">1</span> to <span
                             class="font-semibold text-slate-900 dark:text-white">10</span> of <span
-                            class="font-semibold text-slate-900 dark:text-white">1,284</span> orders</p>
+                            class="font-semibold text-slate-900 dark:text-white"><?= count($orders) ?></span> orders</p>
                     <div class="flex items-center gap-2">
                         <button
                             class="h-9 w-9 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-white dark:hover:bg-slate-800 disabled:opacity-50 transition-all"

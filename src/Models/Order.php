@@ -9,15 +9,21 @@ class Order{
     private ?string $title;
     private ?string $description;
     private ?string $created_at;
-    private int $user_id;
+    private ?int $user_id;
+    private ?string $first_name;
+    private ?string $last_name;
+    private ?string $email;
 
-    function __construct(?PDO $conn, ?int $id=null,?string $title=null,?string $description=null,?string $created_at=null,int $user_id=0){
+    function __construct(?PDO $conn = NULL, ?int $id=null,?string $title=null,?string $description=null,?string $created_at=null, ?int $user_id = NULL, ?string $last_name = NULL, ?string $first_name = NULL, ?string $email = NULL){
         $this->conn = $conn;
         $this->id=$id;
         $this->title=$title;
         $this->description=$description;
         $this->created_at=$created_at;
         $this->user_id=$user_id;
+        $this->first_name = $first_name;
+        $this->last_name = $last_name;
+        $this->email = $email;
     }
 
     function getId(){
@@ -60,8 +66,38 @@ class Order{
         $this->user_id=$user_id;
     }
 
+    public function getFirst_name()
+    {
+        return $this->first_name;
+    }
+
+    public function setFirst_name($first_name)
+    {
+        $this->first_name = $first_name;
+    }
+
+    public function getLast_name()
+    {
+        return $this->last_name;
+    }
+
+    public function setLast_name($last_name)
+    {
+        $this->last_name = $last_name;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
     function read(){
-        $sql = "SELECT * FROM orders";
+        $sql = "SELECT o.*, u.first_name, u.last_name, u.email FROM orders o LEFT JOIN users u ON o.user_id = u.id";
         $stmt = $this->conn->prepare($sql);
         $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, self::class);
         $stmt->execute();

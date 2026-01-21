@@ -52,7 +52,7 @@ class Role{
         $stmt = $this->conn->prepare($sql);
         $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, self::class);
         $stmt->execute();
-        $user = $stmt->fetch();
+        $user = $stmt->fetchAll();
         return $user;
     }
 }
