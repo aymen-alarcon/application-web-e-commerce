@@ -1,12 +1,6 @@
 <?php
-    use App\config\DatabaseConnection;
-    use App\Models\Category;
+use App\Service\UserService;
 
-    $db = new DatabaseConnection();
-    $conn = $db->establishConnection();
-
-    $handler = new Category($conn);
-    $categories = $handler->read();
 ?>
 <!DOCTYPE html>
 <html class="light" lang="en">
@@ -16,14 +10,9 @@
     <title>Product Detail Page - ElectroShop</title>
     <link rel="shortcut icon" href="../../../public/images/logo.jpg" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",

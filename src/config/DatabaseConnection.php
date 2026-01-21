@@ -5,14 +5,29 @@ use PDO;
 use PDOException;
 
 class DatabaseConnection{
-    function establishConnection(){
+    private static ?DatabaseConnection $instance = NULL;
+    private ?PDO $conn;
+
+    function __construct()
+    {
         try {
-            $dsn = new PDO("mysql:host=localhost;dbname=e_commerce;", "root", "");
-            $dsn->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
+            $this->conn = new PDO("mysql:host=localhost;dbname=e_commerce;", "root", "");
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             echo $e->getMessage();
-            echo $dsn->errorCode();
+            echo $this->conn->errorCode();
         }
-        return $dsn;
+    }
+
+    static function getInstance(): DatabaseConnection{
+        if (self::$instance == NULL) {
+            self::$instance = new self();
+        }
+
+        return self::$instance;
+    }
+
+    function getConnection(){
+        return $this->conn;
     }
 }

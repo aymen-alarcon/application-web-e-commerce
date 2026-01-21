@@ -110,33 +110,35 @@ class User{
         $this->readById();
     }
 
-    function loginUser(){
+    public function authenticate()
+    {
         $sql = "SELECT * FROM users WHERE email = :email";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(":email", $this->getEmail());
-        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE,User::class);
+        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, User::class);
         $stmt->execute();
         $user = $stmt->fetch();
-        if (password_verify($this->getPassword() ,$user->getPassword()) === TRUE) {
-            $_SESSION["id"] = $user->getId();
-            $_SESSION["user"] = $user;
-            if ($user->getRole_id() === 1) {
-                header("Location: /Admin/Dashboard");
-                exit;
-            }else{
-                header("Location: /Home");
-                exit;
-            }
-        } else {
+
+        if (!$user || !password_verify($this->getPassword(), $user->getPassword())) {
             throw new PDOException("Invalid email or password.");
-            return NULL;
         }
+
+        return $user;
     }
 
     function readById(){
         $sql = "SELECT * FROM users WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(":id", $this->getId());
+        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, self::class);
+        $stmt->execute();
+        $user = $stmt->fetch();
+        return $user;
+    }
+
+    function read(){
+        $sql = "SELECT * FROM users";
+        $stmt = $this->conn->prepare($sql);
         $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, self::class);
         $stmt->execute();
         $user = $stmt->fetch();

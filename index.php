@@ -8,8 +8,7 @@ use App\Controller\AuthController;
 use App\Controller\ViewsController;
 use App\core\Router;
 
-$db = new DatabaseConnection;
-$conn = $db->establishConnection();
+$conn = DatabaseConnection::getInstance()->getConnection();
 
 $routing = new Router();
 

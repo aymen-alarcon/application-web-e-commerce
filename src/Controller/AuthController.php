@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Models\User;
+use App\Service\UserService;
 use PDO;
 
 class AuthController{
@@ -16,7 +17,22 @@ class AuthController{
         $handler = new User($this->conn);
         $handler->setEmail($_POST["email"]);
         $handler->setPassword($_POST["password"]);
-        $handler->loginUser();
+        $user = $handler->authenticate();
+
+        $_SESSION["id"] = $user->getId();
+        $_SESSION["role_id"] = $user->getRole_id();
+
+        if ($user->getRole_id() === 1) {
+            $service = new UserService();
+            $service->fetchCategories();
+            $service->fetchOrders();
+            $service->fetchProduct();
+            $service->fetchRoles();
+            $service->fetchUsers();
+            header("Location: /Admin/Dashboard");
+        } else {
+            header("Location: /Home");
+        }
     }
 
     function createUser(){
