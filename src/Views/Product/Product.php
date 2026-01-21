@@ -1,9 +1,10 @@
 <?php
-require "src/Views/Includes/header.php";
+    require "src/Views/Includes/header.php";
     use App\Models\Product;
 
     $handler = new Product($conn);
     $handler->setId($_GET["id"]);
+    
     $product = $handler->readById();
 ?>
     <main class="max-w-[1280px] mx-auto px-6 py-8">

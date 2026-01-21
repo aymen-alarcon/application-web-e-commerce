@@ -17,6 +17,7 @@ $authController = new AuthController($conn);
 $viewsController =  new ViewsController();
 
 $routing->get("/", [$viewsController, "loginForm"]);
+$routing->get("/404", [$viewsController, "notFoundPage"]);
 $routing->get("/Login", [$viewsController, "loginForm"]);
 $routing->get("/Signup", [$viewsController, "signupForm"]);
 $routing->get("/Logout", [$viewsController, "logOutForm"]);

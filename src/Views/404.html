@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>404 - Page Not Found | TechStore</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#5a738c",
+                        "background-light": "#ffffff",
+                        "background-dark": "#22262a",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-[#141415] dark:text-white transition-colors duration-200">
+    <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <main class="flex flex-1 flex-col items-center justify-center px-4 py-20 text-center">
+                <div class="mb-8 relative">
+                    <div class="absolute inset-0 bg-primary/5 rounded-full blur-3xl scale-150"></div>
+                    <div class="relative">
+                        <h1
+                            class="text-primary text-[120px] md:text-[180px] font-extrabold leading-none tracking-tighter opacity-10 select-none">
+                            404</h1>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-primary text-8xl">router</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="max-w-[640px] z-10">
+                    <h2
+                        class="text-[#141415] dark:text-white text-[32px] md:text-[40px] font-bold leading-tight tracking-[-0.02em] mb-4">
+                        Oops! Page Not Found
+                    </h2>
+                    <p class="text-[#71757a] dark:text-[#a1a5aa] text-lg font-normal leading-relaxed mb-10 px-4">
+                        The link you followed may be broken, or the page may have been removed.
+                        Don't worry, our store is still open for business. Let's get you back on track.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <button
+                            class="flex min-w-[180px] items-center justify-center rounded-lg h-12 px-8 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-[#4a5f74] transition-all shadow-lg shadow-primary/20">
+                            <span class="material-symbols-outlined mr-2">home</span>
+                            Back to Home
+                        </button>
+                        <button
+                            class="flex min-w-[180px] items-center justify-center rounded-lg h-12 px-8 bg-transparent border border-[#d1d5db] dark:border-[#3a3f44] text-[#141415] dark:text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-[#f2f2f3] dark:hover:bg-[#2d3238] transition-all">
+                            <span class="material-symbols-outlined mr-2">support_agent</span>
+                            Contact Support
+                        </button>
+                    </div>
+                </div>
+                <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-[960px]">
+                    <a class="group p-6 rounded-xl border border-[#f2f2f3] dark:border-[#2d3238] hover:border-primary/30 hover:bg-primary/5 transition-all text-left"
+                        href="#">
+                        <span class="material-symbols-outlined text-primary mb-3">laptop_mac</span>
+                        <h3 class="font-bold mb-1">Latest Tech</h3>
+                        <p class="text-sm text-[#71757a] dark:text-[#a1a5aa]">Shop our newest laptops and hardware.</p>
+                    </a>
+                    <a class="group p-6 rounded-xl border border-[#f2f2f3] dark:border-[#2d3238] hover:border-primary/30 hover:bg-primary/5 transition-all text-left"
+                        href="#">
+                        <span class="material-symbols-outlined text-primary mb-3">sell</span>
+                        <h3 class="font-bold mb-1">Clearance Deals</h3>
+                        <p class="text-sm text-[#71757a] dark:text-[#a1a5aa]">Save up to 40% on certified gear.</p>
+                    </a>
+                    <a class="group p-6 rounded-xl border border-[#f2f2f3] dark:border-[#2d3238] hover:border-primary/30 hover:bg-primary/5 transition-all text-left"
+                        href="#">
+                        <span class="material-symbols-outlined text-primary mb-3">local_shipping</span>
+                        <h3 class="font-bold mb-1">Order Tracking</h3>
+                        <p class="text-sm text-[#71757a] dark:text-[#a1a5aa]">Check the status of your recent purchase.
+                        </p>
+                    </a>
+                </div>
+            </main>
+            <footer
+                class="mt-auto py-10 border-t border-[#f2f2f3] dark:border-[#3a3f44] w-full max-w-[1280px] mx-auto text-center">
+                <p class="text-sm text-[#71757a] dark:text-[#a1a5aa]">
+                    © 2024 TechStore MVC. All systems operational.
+                </p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,4 +1,14 @@
-<?php require_once "src/Views/Includes/header.php"; ?>
+<?php
+    require_once "src/Views/Includes/header.php"; 
+
+    use App\Models\Order;
+    use App\Models\OrderItem;
+
+    $Order = new Order($conn);
+    $OrderItemsHandler = new OrderItem($conn);
+    $orders = $Order->read();
+    $OrderItems = $OrderItemsHandler->read();
+?>
             <main class="flex-1 px-6 lg:px-40 py-8 max-w-[1440px] mx-auto w-full">
                 <div class="flex flex-wrap items-center gap-2 mb-6">
                     <a class="text-[#647e87] dark:text-gray-400 text-sm font-medium hover:text-primary"

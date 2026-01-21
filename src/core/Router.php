@@ -26,7 +26,7 @@ class Router{
 
         if ($callback === NULL) {
             http_response_code(404);
-            die("404 Not Found Page");
+            header("Location; /404");
         }
 
         foreach ($this->middleware[$path] ?? [] as $middleware) {

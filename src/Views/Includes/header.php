@@ -1,8 +1,12 @@
 <?php
     use App\config\DatabaseConnection;
+    use App\Models\Category;
 
     $db = new DatabaseConnection();
     $conn = $db->establishConnection();
+
+    $handler = new Category($conn);
+    $categories = $handler->read();
 ?>
 <!DOCTYPE html>
 <html class="light" lang="en">
@@ -52,7 +56,6 @@
         }
     </style>
 </head>
-
 <body
     class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-200">
     <header
@@ -64,10 +67,9 @@
                     <a href="/Home" class="text-xl font-black tracking-tight uppercase">ElectroShop</a>
                 </div>
                 <nav class="hidden md:flex items-center gap-6">
-                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Laptops</a>
-                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Smartphones</a>
-                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Audio</a>
-                    <a class="text-sm font-medium hover:text-primary transition-colors" href="#">Monitors</a>
+                    <?php foreach($categories as $category): ?>
+                        <a class="text-sm font-medium hover:text-primary transition-colors" href="#"><?= $category->getName() ?></a>
+                    <?php endforeach; ?>
                 </nav>
             </div>
             <div class="flex items-center gap-4 flex-1 justify-end">

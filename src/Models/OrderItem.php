@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Models;
+use PDO;
+use PDOException;
 
 class OrderItem{
+    private ?PDO $conn;
     private ?int $id;
     private ?int $order_id;
     private ?int $product_id;
@@ -11,8 +14,9 @@ class OrderItem{
     private ?int $quantity;
     private ?string $created_at;
 
-    public function __construct(?int $id = null, ?int $order_id = NULL, ?int $product_id = NULL, ?string $product_name = NULL, ?float $price = NULL, ?int $quantity = NULL, ?string $created_at = null) 
+    public function __construct(?PDO $conn = NULL, ?int $id = null, ?int $order_id = NULL, ?int $product_id = NULL, ?string $product_name = NULL, ?float $price = NULL, ?int $quantity = NULL, ?string $created_at = null) 
     {
+        $this->conn = $conn;
         $this->id = $id;
         $this->order_id = $order_id;
         $this->product_id = $product_id;
@@ -90,5 +94,14 @@ class OrderItem{
     public function setCreated_at($created_at)
     {
         $this->created_at = $created_at;
+    }
+
+    function read(){
+        $sql = "SELECT * FROM order_items";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, self::class);
+        $stmt->execute();
+        $order_items = $stmt->fetchAll();
+        return $order_items;
     }
 }
