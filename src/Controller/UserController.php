@@ -16,13 +16,13 @@
             $handler = new User($this->conn);
             $handler->setFirst_name($_POST["first_name"]);
             $handler->setLast_name($_POST["last_name"]);
-            $handler->setEmail($_POST["last_name"]);
-            $handler->setPassword($_POST["last_name"]);
-            $handler->setRole_id($_POST["last_name"]);
+            $handler->setEmail($_POST["email"]);
+            $handler->setPassword($_POST["password"]);
+            $handler->setRole_id($_POST["role"]);
             $handler->createUser();
 
             if (http_response_code(200)) {
-                header("Location: /Admin/Categories");
+                header("Location: /Admin/Users");
             }
         }    
 
@@ -31,7 +31,7 @@
             $handler->setId($_POST["id"]);
             $handler->delete();
 
-            header("Location: /Admin/Categories");
+            header("Location: /Admin/Users");
         }
 
         function updateUser(){
@@ -39,11 +39,11 @@
             $handler->setId($_POST["id"]);
             $handler->setFirst_name($_POST["first_name"]);
             $handler->setLast_name($_POST["last_name"]);
-            $handler->setEmail($_POST["last_name"]);
-            $handler->setPassword($_POST["last_name"]);
-            $handler->setRole_id($_POST["last_name"]);
+            $handler->setEmail($_POST["email"]);
+            $handler->setPassword($_POST["password"]);
+            $handler->setRole_id($_POST["role"]);
             $handler->update();
 
-            header("Location: /Admin/Categories");
+            header("Location: /Admin/Users");
         }
     }

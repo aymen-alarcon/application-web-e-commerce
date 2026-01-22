@@ -99,7 +99,7 @@ class Product{
     }
 
     function create(){
-        $sql = "INSERT INTO products (name, description, price, stock, category_id)VALUES (:name, :description, price, stock, category_id)";
+        $sql = "INSERT INTO products (name, description, price, stock, category_id)VALUES (:name, :description, :price, :stock, :category_id)";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(":name", $this->getName());
         $stmt->bindValue(":description", $this->getDescription());
