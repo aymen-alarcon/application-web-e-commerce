@@ -18,5 +18,6 @@ if (window.location.href.includes("Admin/Categories")) {
 
     function openDeleteModal(id) {
         openModal('deleteCategoryModal')
+        document.getElementById('deleteCategoryId').value = id
     } 
 }

@@ -96,6 +96,26 @@ class OrderItem{
         $this->created_at = $created_at;
     }
 
+    function create(){
+        $sql = "INSERT INTO orders (product_name, quantity, price, stock, product_id, order_id)VALUES (:product_name, :quantity, :price, :stock, :product_id, :order_id)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(":title", $this->getProduct_name());
+        $stmt->bindValue(":description", $this->getQuantity());
+        $stmt->bindValue(":price", $this->getPrice());
+        $stmt->bindValue(":stock", $this->getOrder_id());
+        $stmt->bindValue(":product_id", $this->getProduct_id());
+        $stmt->bindValue(":order_id", $this->getPrice());
+        $stmt->execute();
+    }
+
+    function delete(){
+        $sql = "DELETE FROM orders WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(":id", $this->getId());
+        $stmt->execute();
+    }
+
+
     function read(){
         $sql = "SELECT * FROM order_items";
         $stmt = $this->conn->prepare($sql);

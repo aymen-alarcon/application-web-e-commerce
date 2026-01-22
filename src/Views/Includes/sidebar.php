@@ -17,7 +17,6 @@
     $roles = $service->fetchRoles();
     $users = $service->fetchUsers();
 ?>
-
 <!DOCTYPE html>
 <html class="light" lang="en">
 <head>

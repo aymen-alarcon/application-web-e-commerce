@@ -1,6 +1,21 @@
 <?php
-use App\Service\UserService;
+    use App\config\DatabaseConnection;
+    use App\Service\UserService;
+    use App\Models\User;
 
+    $conn = DatabaseConnection::getInstance()->getConnection();
+
+    $handler = new  User($conn);
+    $handler->setId($_SESSION['id']);
+    $user = $handler->readById();
+
+    $service = new UserService($conn);
+
+    $categories = $service->fetchCategories();
+    $orders = $service->fetchOrders();
+    $products = $service->fetchProducts();
+    $roles = $service->fetchRoles();
+    $users = $service->fetchUsers();
 ?>
 <!DOCTYPE html>
 <html class="light" lang="en">

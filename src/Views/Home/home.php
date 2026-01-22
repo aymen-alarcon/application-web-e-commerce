@@ -1,6 +1,10 @@
 <?php 
-    require "src/Views/Includes/header.php"; 
-    use App\Models\Product;
+    require "src/Views/Includes/header.php";
+
+use App\config\DatabaseConnection;
+use App\Models\Product;
+
+    $conn = DatabaseConnection::getInstance()->getConnection();
     $handler = new Product($conn);
     $products = $handler->read();
 ?>

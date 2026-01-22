@@ -22,4 +22,22 @@
                 header("Location: /Admin/Categories");
             }
         }    
+
+        function deleteCategory(){
+            $handler = new Category($this->conn);
+            $handler->setId($_POST["id"]);
+            $handler->delete();
+
+            header("Location: /Admin/Categories");
+        }
+
+        function updateCategory(){
+            $handler = new Category($this->conn);
+            $handler->setId($_POST["id"]);
+            $handler->setName($_POST["name"]);
+            $handler->setDescription($_POST["description"]);
+            $handler->update();
+
+            header("Location: /Admin/Categories");
+        }
     }

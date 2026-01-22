@@ -144,4 +144,22 @@ class User{
         $user = $stmt->fetchAll();
         return $user;
     }
+
+    function update(){
+        $sql = "UPDATE users SET first_name = COALESCE(:first_name, first_name), last_name = COALESCE(:last_name, last_name), email = COALESCE(:email, email), role_id = COALESCE(:role_id, role_id) WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(":id", $this->getId());
+        $stmt->bindValue(":first_name", $this->getFirst_name());
+        $stmt->bindValue(":last_name", $this->getLast_name());
+        $stmt->bindValue(":email", $this->getEmail());
+        $stmt->bindValue(":role_id", $this->getRole_id());
+        $stmt->execute();
+    }
+
+    function delete(){
+        $sql = "DELETE FROM users WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(":id", $this->getId());
+        $stmt->execute();
+    }
 }

@@ -35,7 +35,7 @@
             <div class="size-6">
                 <span class="material-symbols-outlined text-3xl">school</span>
             </div>
-            <a href="main.php">
+            <a href="/Home">
                 <h2 class="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">AdminCore</h2>
             </a>
         </div>

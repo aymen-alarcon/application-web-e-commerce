@@ -58,19 +58,19 @@
       </button>
     </div>
 
-    <form class="p-5 space-y-4">
-      <input type="hidden" id="editCategoryId">
+    <form class="p-5 space-y-4" method="POST" action="/updateCategoryProcess">
+      <input type="hidden" id="editCategoryId" name="id">
 
       <div>
         <label class="text-sm font-medium">Category Name</label>
-        <input id="editCategoryName" type="text"
+        <input id="editCategoryName" type="text" name="name"
                class="mt-1 w-full rounded-lg bg-slate-50 dark:bg-slate-800 border-none
                       focus:ring-2 focus:ring-primary text-sm">
       </div>
 
       <div>
         <label class="text-sm font-medium">Description</label>
-        <textarea id="editCategoryDescription" rows="3"
+        <textarea id="editCategoryDescription" rows="3" name="description"
                   class="mt-1 w-full rounded-lg bg-slate-50 dark:bg-slate-800 border-none
                          focus:ring-2 focus:ring-primary text-sm"></textarea>
       </div>
@@ -92,7 +92,8 @@
      class="fixed inset-0 z-50 hidden flex items-center justify-center px-4">
   <div class="bg-white dark:bg-[#1e2124] w-full max-w-sm rounded-xl shadow-xl border border-slate-200 dark:border-slate-800">
 
-    <div class="p-5 text-center space-y-3">
+    <form class="p-5 text-center space-y-3" method="POST" action="/deleteCategoryProcess">
+        <input type="hidden" id="deleteCategoryId" name="id">
       <div class="mx-auto size-12 rounded-full bg-red-50 dark:bg-red-900/20 flex items-center justify-center text-red-600">
         <span class="material-symbols-outlined">delete</span>
       </div>
@@ -107,11 +108,11 @@
                 class="px-4 py-2 text-sm rounded-lg border border-slate-200 dark:border-slate-800">
           Cancel
         </button>
-        <button class="px-5 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-bold text-sm">
+        <button type="submit" class="px-5 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-bold text-sm">
           Delete
-        </button>
+</button>
       </div>
-    </div>
+</form>
 
   </div>
 </div>
