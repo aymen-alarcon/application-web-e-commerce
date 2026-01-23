@@ -99,3 +99,32 @@ if (window.location.href.includes("Cart")) {
 
     calculateTotal();
 }
+
+if (window.location.href.includes("Home")) {
+    document.addEventListener("DOMContentLoaded", () => {
+        const buttons = document.querySelectorAll(".filter-btn");
+
+        buttons.forEach(button => {
+            button.addEventListener("click", () => {
+                const category = button.dataset.category;
+
+                buttons.forEach(btn => {
+                    btn.classList.remove("bg-primary", "text-white");
+                    btn.classList.add("bg-[#f0f2f4]");
+                });
+
+                button.classList.add("bg-primary", "text-white");
+
+                document.querySelectorAll(".product-card").forEach(product => {
+                    const productCategory = product.dataset.category;
+
+                    if (category === "all" || productCategory === category) {
+                        product.style.display = "flex";
+                    } else {
+                        product.style.display = "none";
+                    }
+                });
+            });
+        });
+    });
+}
