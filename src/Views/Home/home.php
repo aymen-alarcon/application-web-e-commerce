@@ -29,10 +29,10 @@
                                 </p>
                             </div>
                             <div class="flex gap-3">
-                                <button
+                                <a
                                     class="flex min-w-[140px] cursor-pointer items-center justify-center rounded-lg h-12 px-6 bg-primary text-white text-base font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform">
                                     Shop Now
-                                </button>
+                                </a>
                                 <button
                                     class="flex size-12 items-center justify-center rounded-lg border-2 border-[#dbe0e6] dark:border-[#3a424a] text-[#111418] dark:text-white hover:bg-white dark:hover:bg-[#23282e] transition-all">
                                     <span class="material-symbols-outlined">favorite</span>
@@ -128,10 +128,10 @@
                                 <div class="flex flex-col">
                                     <span class="text-xl font-black text-[#111418] dark:text-white">$<?= $product->getPrice() ?></span>
                                 </div>
-                                <button
+                                <a href="/Home?id=<?= $product->getId() ?>&SendToCart=True"
                                     class="flex size-10 items-center justify-center rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors">
                                     <span class="material-symbols-outlined text-lg">add_shopping_cart</span>
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>

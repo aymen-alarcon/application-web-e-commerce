@@ -14,13 +14,15 @@
 
         function createOrder(){
             $handler = new Order($this->conn);
-            $handler->setTitle($_POST["name"]);
-            $handler->setDescription($_POST["description"]);
+            $handler->setTitle("Order for the user with the id " . $_SESSION["id"]);
             $handler->setUser_id($_SESSION["id"]);
-            $handler->create();
+            $_SESSION["quantities"] = $_POST["quantities"];
+            $orderId = $handler->create();
 
             if (http_response_code(200)) {
-                header("Location: /Admin/Categories");
+                if (str_contains($_SERVER["HTTP_REFERER"], "Cart")) {
+                    header("Location: /registerOrderItemProcess?order_id=" . $orderId);
+                }
             }
         }    
 

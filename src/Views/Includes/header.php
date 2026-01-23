@@ -18,6 +18,15 @@
         $link = explode("&", $_SERVER["REQUEST_URI"]);
         header("Location: " . $link[0]);
     }
+    
+    if (isset($_GET["TakeOutOfCart"]) && $_GET["TakeOutOfCart"] === "True") {
+        if (($key = array_search($_GET["productId"], $_SESSION["cart"])) !== false) {
+            unset($_SESSION["cart"][$key]);
+            $_SESSION["cart"] = array_values($_SESSION["cart"]);
+        }
+        $link = explode("?", $_SERVER["REQUEST_URI"]);
+        header("Location: " . $link[0]);
+    }
 
     $service = new UserService($conn);
 

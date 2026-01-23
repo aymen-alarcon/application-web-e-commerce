@@ -53,7 +53,7 @@
                                                         style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBq56w0QQftH25qWep8j4Vfrd2RFwSwUwltkmw1_KOBzd8ZnbHml6lG8HEda3cwOq-qWuqN2G11u2Q2Kc1GRk4SVrOiLfmD92syCVUjPHBlnHN7JapKoY70ddYGAY2IjyFbToOKye4WWIdQr-01gzWpIHSVowEGxkjod-Ld3NmbQIwDwgPCzk6XkFx_86Vr4PMKn1jayXWM5wi8eqvFrooHEqr-PS6xZ3Q-k5lRHG9F6-Z95uO3fGcwiTsdUe-wE2YTFDwtaNhybR0");'>
                                                     </div>
                                                     <div class="flex flex-col">
-                                                        <span class="text-[#111617] dark:text-white font-bold text-base">
+                                                        <span class="text-[#111617] dark:text-white font-bold text-base" name="name">
                                                             <?= htmlspecialchars($orderItems->getName()) ?>
                                                         </span>
                                                         <span class="text-[#647e87] dark:text-gray-400 text-xs mt-1">
@@ -68,7 +68,7 @@
                                             </td>
 
                                             <td class="px-6 py-6 text-center quantity">
-                                                <input type="number" name="quantity" placeholder="1" min="1" max="<?= $orderItems->getStock() ?>" value="2">
+                                                <input type="number" name="quantities[<?= $orderItems->getId() ?>]" placeholder="1" min="1" max="<?= $orderItems->getStock() ?>" >
                                             </td>
 
                                             <td class="px-6 py-6 text-right priceTotal">
@@ -76,7 +76,7 @@
                                             </td>
 
                                             <td class="px-6 py-6 text-center">
-                                                <a href="/cart/remove/<?= $orderItems->getId() ?>"
+                                                <a href="/Cart?productId=<?= $orderItems->getId() ?>&TakeOutOfCart=True"
                                                 class="text-gray-400 hover:text-accent-red transition-colors">
                                                     <span class="material-symbols-outlined">delete_outline</span>
                                                 </a>
@@ -119,16 +119,16 @@
                             <div class="pt-6 border-t border-[#dce3e5] dark:border-gray-700 mb-8">
                                 <div class="flex justify-between items-center">
                                     <span class="text-[#111617] dark:text-white text-lg font-black">Grand Total</span>
-                                    <span class="text-primary text-2xl font-black Grand-Total">$1,492.00</span>
+                                    <span class="text-primary text-2xl font-black Grand-Total"></span>
                                 </div>
                             </div>
-                            <button
+                            <button <?php if (count($_SESSION["cart"]) < 1 || !isset($_SESSION["id"])) { echo "disabled";} ?>
                                 class="w-full bg-primary text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all flex items-center justify-center gap-2 group">
                                 Proceed to Checkout
                                 <span
                                     class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
                             </button>
-                                    </form>
+                        </form>
                         </div>
                         <div class="rounded-xl border border-dashed border-[#dce3e5] dark:border-gray-700 p-6">
                             <div class="flex gap-4">

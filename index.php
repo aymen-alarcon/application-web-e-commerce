@@ -51,7 +51,7 @@ $routing->post("/updateProductProcess", [$ProductController, "updateProduct"]);
 $routing->post("/deleteProductProcess", [$ProductController, "deleteProduct"]);
 $routing->post("/registerOrderProcess", [$OrderController, "createOrder"]);
 $routing->post("/deleteOrderProcess", [$OrderController, "deleteOrder"]);
-$routing->post("/registerOrderItemProcess", [$OrderItemController, "createOrderItem"]);
+$routing->get("/registerOrderItemProcess", [$OrderItemController, "createOrderItem"]);
 $routing->post("/deleteOrderItemProcess", [$OrderItemController, "deleteOrderItem"]);
 
 

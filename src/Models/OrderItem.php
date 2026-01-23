@@ -9,19 +9,15 @@ class OrderItem{
     private ?int $id;
     private ?int $order_id;
     private ?int $product_id;
-    private ?string $product_name;
-    private ?float $price;
     private ?int $quantity;
     private ?string $created_at;
 
-    public function __construct(?PDO $conn = NULL, ?int $id = null, ?int $order_id = NULL, ?int $product_id = NULL, ?string $product_name = NULL, ?float $price = NULL, ?int $quantity = NULL, ?string $created_at = null) 
+    public function __construct(?PDO $conn = NULL, ?int $id = null, ?int $order_id = NULL, ?int $product_id = NULL, ?int $quantity = NULL, ?string $created_at = null) 
     {
         $this->conn = $conn;
         $this->id = $id;
         $this->order_id = $order_id;
         $this->product_id = $product_id;
-        $this->product_name = $product_name;
-        $this->price = $price;
         $this->quantity = $quantity;
         $this->created_at = $created_at;
     }
@@ -56,26 +52,6 @@ class OrderItem{
         $this->product_id = $product_id;
     }
 
-    public function getProduct_name()
-    {
-        return $this->product_name;
-    }
-
-    public function setProduct_name($product_name)
-    {
-        $this->product_name = $product_name;
-    }
-
-    public function getPrice()
-    {
-        return $this->price;
-    }
-
-    public function setPrice($price)
-    {
-        $this->price = $price;
-    }
-
     public function getQuantity()
     {
         return $this->quantity;
@@ -97,19 +73,16 @@ class OrderItem{
     }
 
     function create(){
-        $sql = "INSERT INTO orders (product_name, quantity, price, stock, product_id, order_id)VALUES (:product_name, :quantity, :price, :stock, :product_id, :order_id)";
+        $sql = "INSERT INTO order_items (quantity, product_id, order_id, created_at)VALUES (:quantity,  :product_id, :order_id, now())";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindValue(":title", $this->getProduct_name());
-        $stmt->bindValue(":description", $this->getQuantity());
-        $stmt->bindValue(":price", $this->getPrice());
-        $stmt->bindValue(":stock", $this->getOrder_id());
+        $stmt->bindValue(":quantity", $this->getQuantity());
         $stmt->bindValue(":product_id", $this->getProduct_id());
-        $stmt->bindValue(":order_id", $this->getPrice());
+        $stmt->bindValue(":order_id", $this->getOrder_id());
         $stmt->execute();
     }
 
     function delete(){
-        $sql = "DELETE FROM orders WHERE id = :id";
+        $sql = "DELETE FROM order_items WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindValue(":id", $this->getId());
         $stmt->execute();

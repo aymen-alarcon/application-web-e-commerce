@@ -14,15 +14,17 @@
 
         function createOrderItem(){
             $handler = new OrderItem($this->conn);
-            $handler->setProduct_name($_POST["name"]);
-            $handler->setPrice($_POST["description"]);
-            $handler->setQuantity($_POST["description"]);
-            $handler->setOrder_id($_POST["description"]);
-            $handler->setProduct_id($_POST["description"]);
-            $handler->create();
-
+            foreach ($_SESSION["quantities"] as $key => $value) {
+                $handler->setQuantity($value);
+                $handler->setOrder_id($_GET["order_id"]);
+                $handler->setProduct_id($key);
+                $handler->create();
+            }
+            
             if (http_response_code(200)) {
-                header("Location: /Admin/Categories");
+                unset($_SESSION["cart"]);
+                unset($_SESSION["quantities"]);
+                header("Location: /Home");
             }
         }    
 

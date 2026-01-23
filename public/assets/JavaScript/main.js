@@ -79,21 +79,18 @@ if (window.location.href.includes("Admin/Users")) {
 
 
 if (window.location.href.includes("Cart")) {
-    const totalPriceElement = document.querySelector(".Total-Price");
-
     function calculateTotal() {
         let finalTotal = 0;
 
         document.querySelectorAll(".product-container").forEach(element => {
-            const price = Number(element.children[1].textContent);
-            const quantity = Number(element.children[2].children[0].value);
-            const itemTotal = price * quantity;
+            const itemTotal = Number(element.children[1].textContent) * Number(element.children[2].children[0].value);
 
             element.children[3].textContent = itemTotal;
             finalTotal += itemTotal;
         });
 
-        totalPriceElement.textContent = finalTotal;
+        document.querySelector(".Total-Price").textContent = finalTotal;
+        document.querySelector(".Grand-Total").textContent = Number(document.querySelector(".Total-Price").textContent) + 15
     }
 
     document.querySelectorAll(".product-container").forEach(element => {
@@ -101,6 +98,4 @@ if (window.location.href.includes("Cart")) {
     });
 
     calculateTotal();
-
-    document.querySelector(".Grand-Total").textContent = Number(totalPriceElement.textContent) + 15
 }
