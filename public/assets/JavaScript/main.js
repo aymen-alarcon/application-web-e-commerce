@@ -76,3 +76,31 @@ if (window.location.href.includes("Admin/Users")) {
         document.getElementById('deleteUserId').value = id
     } 
 }
+
+
+if (window.location.href.includes("Cart")) {
+    const totalPriceElement = document.querySelector(".Total-Price");
+
+    function calculateTotal() {
+        let finalTotal = 0;
+
+        document.querySelectorAll(".product-container").forEach(element => {
+            const price = Number(element.children[1].textContent);
+            const quantity = Number(element.children[2].children[0].value);
+            const itemTotal = price * quantity;
+
+            element.children[3].textContent = itemTotal;
+            finalTotal += itemTotal;
+        });
+
+        totalPriceElement.textContent = finalTotal;
+    }
+
+    document.querySelectorAll(".product-container").forEach(element => {
+        element.children[2].addEventListener("change", calculateTotal);
+    });
+
+    calculateTotal();
+
+    document.querySelector(".Grand-Total").textContent = Number(totalPriceElement.textContent) + 15
+}

@@ -100,7 +100,7 @@
                 <a href="/Cart" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors relative">
                     <span class="material-symbols-outlined">shopping_cart</span>
                     <span
-                        class="absolute top-1 right-1 bg-primary text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">2</span>
+                        class="absolute top-1 right-1 bg-primary text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full"><?= count($_SESSION["cart"]) ?></span>
                 </a>
             </div>
         </div>

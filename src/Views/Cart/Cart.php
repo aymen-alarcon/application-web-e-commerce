@@ -1,7 +1,5 @@
 <?php
-
     use App\Models\Product;
-
     require_once "src/Views/Includes/header.php"; 
 ?>
             <main class="flex-1 px-6 lg:px-40 py-8 max-w-[1440px] mx-auto w-full">
@@ -14,7 +12,7 @@
                 <div class="flex flex-wrap items-baseline justify-between gap-3 mb-8">
                     <h1 class="text-[#111617] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">
                         Your Shopping Cart</h1>
-                    <span class="text-[#647e87] dark:text-gray-400 font-medium">3 items in your bag</span>
+                    <span class="text-[#647e87] dark:text-gray-400 font-medium"><?= count($_SESSION["cart"]) ?> items in your bag</span>
                 </div>
                 <div class="flex flex-col xl:flex-row gap-8 items-start">
                     <div class="flex-1 w-full @container">
@@ -41,54 +39,50 @@
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-[#dce3e5] dark:divide-gray-700">
-                                    <?php     
-                                        $products = new Product($conn);
-
-                                        foreach ($_SESSION["cart"] as $productId) {
-                                            $orderItems = $products->readById($productId);
-                                    ?>
-                                    <tr class="group hover:bg-primary/[0.02] transition-colors">
-                                        <td class="px-6 py-6">
-                                            <div class="flex items-center gap-4">
-                                                <div class="bg-center bg-no-repeat bg-cover rounded-lg w-20 h-20 bg-gray-100 flex-shrink-0"
-                                                    data-alt="High-performance laptop with 16GB RAM"
-                                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBq56w0QQftH25qWep8j4Vfrd2RFwSwUwltkmw1_KOBzd8ZnbHml6lG8HEda3cwOq-qWuqN2G11u2Q2Kc1GRk4SVrOiLfmD92syCVUjPHBlnHN7JapKoY70ddYGAY2IjyFbToOKye4WWIdQr-01gzWpIHSVowEGxkjod-Ld3NmbQIwDwgPCzk6XkFx_86Vr4PMKn1jayXWM5wi8eqvFrooHEqr-PS6xZ3Q-k5lRHG9F6-Z95uO3fGcwiTsdUe-wE2YTFDwtaNhybR0");'>
+                                    <form action="/registerOrderProcess" method="post">
+                                        <?php     
+                                            $products = new Product($conn);
+                                            foreach ($_SESSION["cart"] as $productId) {
+                                                $orderItems = $products->readById($productId);
+                                        ?>
+                                        <tr class="group product-container hover:bg-primary/[0.02] transition-colors">
+                                            <td class="px-6 py-6">
+                                                <div class="flex items-center gap-4">
+                                                    <div class="bg-center bg-no-repeat bg-cover rounded-lg w-20 h-20 bg-gray-100 flex-shrink-0"
+                                                        data-alt="High-performance laptop with 16GB RAM"
+                                                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBq56w0QQftH25qWep8j4Vfrd2RFwSwUwltkmw1_KOBzd8ZnbHml6lG8HEda3cwOq-qWuqN2G11u2Q2Kc1GRk4SVrOiLfmD92syCVUjPHBlnHN7JapKoY70ddYGAY2IjyFbToOKye4WWIdQr-01gzWpIHSVowEGxkjod-Ld3NmbQIwDwgPCzk6XkFx_86Vr4PMKn1jayXWM5wi8eqvFrooHEqr-PS6xZ3Q-k5lRHG9F6-Z95uO3fGcwiTsdUe-wE2YTFDwtaNhybR0");'>
+                                                    </div>
+                                                    <div class="flex flex-col">
+                                                        <span class="text-[#111617] dark:text-white font-bold text-base">
+                                                            <?= htmlspecialchars($orderItems->getName()) ?>
+                                                        </span>
+                                                        <span class="text-[#647e87] dark:text-gray-400 text-xs mt-1">
+                                                            <?= htmlspecialchars($orderItems->getDescription()) ?>
+                                                        </span>
+                                                    </div>
                                                 </div>
-                                                <div class="flex flex-col">
-                                                    <span class="text-[#111617] dark:text-white font-bold text-base">
-                                                        <?= htmlspecialchars($orderItems->getName()) ?>
-                                                    </span>
-                                                    <span class="text-[#647e87] dark:text-gray-400 text-xs mt-1">
-                                                        <?= htmlspecialchars($orderItems->getDescription()) ?>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </td>
+                                            </td>
 
-                                        <td class="px-6 py-6 hidden md:table-cell">
-                                            <span class="text-[#647e87] dark:text-gray-300 font-medium">
-                                                $<?= number_format($orderItems->getPrice(), 2) ?>
-                                            </span>
-                                        </td>
+                                            <td class="px-6 py-6 hidden md:table-cell price">
+                                                <?= number_format($orderItems->getPrice(), 2) ?>
+                                            </td>
 
-                                        <td class="px-6 py-6 text-center">
-                                            1
-                                        </td>
+                                            <td class="px-6 py-6 text-center quantity">
+                                                <input type="number" name="quantity" placeholder="1" min="1" max="<?= $orderItems->getStock() ?>" value="2">
+                                            </td>
 
-                                        <td class="px-6 py-6 text-right">
-                                            <span class="text-[#111617] dark:text-white font-bold">
-                                                $<?= number_format($orderItems->getPrice(), 2) ?>
-                                            </span>
-                                        </td>
+                                            <td class="px-6 py-6 text-right priceTotal">
+        
+                                            </td>
 
-                                        <td class="px-6 py-6 text-center">
-                                            <a href="/cart/remove/<?= $orderItems->getId() ?>"
-                                            class="text-gray-400 hover:text-accent-red transition-colors">
-                                                <span class="material-symbols-outlined">delete_outline</span>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <?php } ?>
+                                            <td class="px-6 py-6 text-center">
+                                                <a href="/cart/remove/<?= $orderItems->getId() ?>"
+                                                class="text-gray-400 hover:text-accent-red transition-colors">
+                                                    <span class="material-symbols-outlined">delete_outline</span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <?php } ?>
                                 </tbody>
                             </table>
                         </div>
@@ -111,7 +105,7 @@
                             <div class="space-y-4 mb-6">
                                 <div class="flex justify-between items-center">
                                     <span class="text-[#647e87] dark:text-gray-400 font-medium">Subtotal</span>
-                                    <span class="text-[#111617] dark:text-white font-bold">$1,477.00</span>
+                                    <span class="text-[#111617] dark:text-white font-bold Total-Price"></span>
                                 </div>
                                 <div class="flex justify-between items-center">
                                     <span class="text-[#647e87] dark:text-gray-400 font-medium">Shipping</span>
@@ -125,19 +119,7 @@
                             <div class="pt-6 border-t border-[#dce3e5] dark:border-gray-700 mb-8">
                                 <div class="flex justify-between items-center">
                                     <span class="text-[#111617] dark:text-white text-lg font-black">Grand Total</span>
-                                    <span class="text-primary text-2xl font-black">$1,492.00</span>
-                                </div>
-                            </div>
-                            <div class="mb-8">
-                                <p
-                                    class="text-xs font-bold text-[#111617] dark:text-gray-300 uppercase tracking-widest mb-3">
-                                    Promo Code</p>
-                                <div class="flex gap-2">
-                                    <input
-                                        class="flex-1 bg-[#F7F8FA] dark:bg-gray-800 border-none rounded-lg text-sm focus:ring-1 focus:ring-primary px-3 h-10"
-                                        placeholder="Enter code" type="text" />
-                                    <button
-                                        class="bg-gray-200 dark:bg-gray-700 text-[#111617] dark:text-white px-4 rounded-lg text-xs font-bold uppercase hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">Apply</button>
+                                    <span class="text-primary text-2xl font-black Grand-Total">$1,492.00</span>
                                 </div>
                             </div>
                             <button
@@ -146,16 +128,7 @@
                                 <span
                                     class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
                             </button>
-                            <div class="mt-6 flex flex-col gap-4 text-center">
-                                <p
-                                    class="text-[10px] text-[#647e87] dark:text-gray-500 uppercase font-medium tracking-tighter">
-                                    Secure Checkout Powered by Stripe</p>
-                                <div class="flex justify-center gap-3 opacity-40 grayscale">
-                                    <span class="material-symbols-outlined">credit_card</span>
-                                    <span class="material-symbols-outlined">account_balance_wallet</span>
-                                    <span class="material-symbols-outlined">contactless</span>
-                                </div>
-                            </div>
+                                    </form>
                         </div>
                         <div class="rounded-xl border border-dashed border-[#dce3e5] dark:border-gray-700 p-6">
                             <div class="flex gap-4">
