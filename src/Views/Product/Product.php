@@ -3,19 +3,13 @@
     use App\Models\Product;
 
     $handler = new Product($conn);
-    $handler->setId($_GET["id"]);
-    
-    $product = $handler->readById();
+    $product = $handler->readById($_GET["id"]);
 ?>
     <main class="max-w-[1280px] mx-auto px-6 py-8">
         <nav class="flex items-center gap-2 text-sm text-slate-500 mb-8">
             <a class="hover:text-primary" href="/Home">Home</a>
             <span class="material-symbols-outlined text-xs">chevron_right</span>
-            <a class="hover:text-primary" href="#">Electronics</a>
-            <span class="material-symbols-outlined text-xs">chevron_right</span>
-            <a class="hover:text-primary" href="#">Monitors</a>
-            <span class="material-symbols-outlined text-xs">chevron_right</span>
-            <span class="text-slate-900 dark:text-white font-medium">Quantum X1 Ultra-Wide</span>
+            <span class="text-slate-900 dark:text-white font-medium"><?= $product->getName() ?></span>
         </nav>
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div class="lg:col-span-7 space-y-4">
@@ -57,8 +51,7 @@
                 <div class="flex flex-col gap-2 mb-4">
                     <h1 class="text-3xl font-bold leading-tight"><?= $product->getName() ?></h1>
                 </div>
-                <div
-                    class="mb-8 p-6 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800">
+                <div class="mb-8 p-6 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800">
                     <div class="flex items-baseline gap-2 mb-2">
                         <span class="text-4xl font-black text-slate-900 dark:text-white">$<?= $product->getPrice() ?></span>
                         <span class="text-lg text-slate-400 line-through">$<?= $product->getPrice() ?></span>
@@ -69,24 +62,24 @@
                     </div>
                 </div>
                 <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-8"><?= $product->getDescription() ?></p>
+                <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-8"><?= $product->getCategory_name() ?></p>
                 <div class="flex flex-col gap-6 mt-auto">
                     <div class="flex items-center gap-4">
                         <div class="flex items-center h-12 rounded-lg bg-slate-100 dark:bg-slate-800 p-1">
-                            <button
-                                class="w-10 h-full flex items-center justify-center hover:bg-white dark:hover:bg-slate-700 rounded transition-colors">
+                            <a href="" class="w-10 h-full flex items-center justify-center hover:bg-white dark:hover:bg-slate-700 rounded transition-colors">
                                 <span class="material-symbols-outlined text-lg">remove</span>
-                            </button>
+                            </a>
                             <span class="px-4 font-bold min-w-10 text-center">1</span>
-                            <button
-                                class="w-10 h-full flex items-center justify-center hover:bg-white dark:hover:bg-slate-700 rounded transition-colors">
+                            <a href="
+                            " class="w-10 h-full flex items-center justify-center hover:bg-white dark:hover:bg-slate-700 rounded transition-colors">
                                 <span class="material-symbols-outlined text-lg">add</span>
-                            </button>
+                            </a>
                         </div>
-                        <button
+                        <a href="/Product?id=<?= $product->getId() ?>&SendToCart=True"
                             class="flex-1 h-12 bg-primary hover:bg-primary/90 text-white font-bold rounded-lg transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
                             <span class="material-symbols-outlined">shopping_cart</span>
                             Add to Cart
-                        </button>
+                        </a>
                     </div>
                     <div class="grid grid-cols-2 gap-4">
                         <div

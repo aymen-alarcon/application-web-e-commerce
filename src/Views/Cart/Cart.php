@@ -1,13 +1,8 @@
 <?php
+
+    use App\Models\Product;
+
     require_once "src/Views/Includes/header.php"; 
-
-    use App\Models\Order;
-    use App\Models\OrderItem;
-
-    $Order = new Order($conn);
-    $OrderItemsHandler = new OrderItem($conn);
-    $orders = $Order->read();
-    $OrderItems = $OrderItemsHandler->read();
 ?>
             <main class="flex-1 px-6 lg:px-40 py-8 max-w-[1440px] mx-auto w-full">
                 <div class="flex flex-wrap items-center gap-2 mb-6">
@@ -46,6 +41,12 @@
                                     </tr>
                                 </thead>
                                 <tbody class="divide-y divide-[#dce3e5] dark:divide-gray-700">
+                                    <?php     
+                                        $products = new Product($conn);
+
+                                        foreach ($_SESSION["cart"] as $productId) {
+                                            $orderItems = $products->readById($productId);
+                                    ?>
                                     <tr class="group hover:bg-primary/[0.02] transition-colors">
                                         <td class="px-6 py-6">
                                             <div class="flex items-center gap-4">
@@ -54,86 +55,40 @@
                                                     style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBq56w0QQftH25qWep8j4Vfrd2RFwSwUwltkmw1_KOBzd8ZnbHml6lG8HEda3cwOq-qWuqN2G11u2Q2Kc1GRk4SVrOiLfmD92syCVUjPHBlnHN7JapKoY70ddYGAY2IjyFbToOKye4WWIdQr-01gzWpIHSVowEGxkjod-Ld3NmbQIwDwgPCzk6XkFx_86Vr4PMKn1jayXWM5wi8eqvFrooHEqr-PS6xZ3Q-k5lRHG9F6-Z95uO3fGcwiTsdUe-wE2YTFDwtaNhybR0");'>
                                                 </div>
                                                 <div class="flex flex-col">
-                                                    <span
-                                                        class="text-[#111617] dark:text-white font-bold text-base leading-tight">ProMax
-                                                        16 Laptop</span>
-                                                    <span class="text-[#647e87] dark:text-gray-400 text-xs mt-1">16GB
-                                                        RAM, 512GB SSD, Silver</span>
+                                                    <span class="text-[#111617] dark:text-white font-bold text-base">
+                                                        <?= htmlspecialchars($orderItems->getName()) ?>
+                                                    </span>
+                                                    <span class="text-[#647e87] dark:text-gray-400 text-xs mt-1">
+                                                        <?= htmlspecialchars($orderItems->getDescription()) ?>
+                                                    </span>
                                                 </div>
                                             </div>
                                         </td>
+
                                         <td class="px-6 py-6 hidden md:table-cell">
-                                            <span class="text-[#647e87] dark:text-gray-300 font-medium">$1,299.00</span>
+                                            <span class="text-[#647e87] dark:text-gray-300 font-medium">
+                                                $<?= number_format($orderItems->getPrice(), 2) ?>
+                                            </span>
                                         </td>
-                                        <td class="px-6 py-6">
-                                            <div class="flex items-center justify-center">
-                                                <div
-                                                    class="flex items-center border border-[#dce3e5] dark:border-gray-600 rounded-lg overflow-hidden h-9">
-                                                    <button
-                                                        class="px-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-primary transition-colors"><span
-                                                            class="material-symbols-outlined text-sm">remove</span></button>
-                                                    <input
-                                                        class="w-10 text-center border-none bg-transparent text-sm font-bold focus:ring-0 p-0"
-                                                        type="text" value="1" />
-                                                    <button
-                                                        class="px-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-primary transition-colors"><span
-                                                            class="material-symbols-outlined text-sm">add</span></button>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="px-6 py-6 text-right">
-                                            <span class="text-[#111617] dark:text-white font-bold">$1,299.00</span>
-                                        </td>
+
                                         <td class="px-6 py-6 text-center">
-                                            <button class="text-gray-400 hover:text-accent-red transition-colors">
+                                            1
+                                        </td>
+
+                                        <td class="px-6 py-6 text-right">
+                                            <span class="text-[#111617] dark:text-white font-bold">
+                                                $<?= number_format($orderItems->getPrice(), 2) ?>
+                                            </span>
+                                        </td>
+
+                                        <td class="px-6 py-6 text-center">
+                                            <a href="/cart/remove/<?= $orderItems->getId() ?>"
+                                            class="text-gray-400 hover:text-accent-red transition-colors">
                                                 <span class="material-symbols-outlined">delete_outline</span>
-                                            </button>
+                                            </a>
                                         </td>
                                     </tr>
-                                    <tr class="group hover:bg-primary/[0.02] transition-colors">
-                                        <td class="px-6 py-6">
-                                            <div class="flex items-center gap-4">
-                                                <div class="bg-center bg-no-repeat bg-cover rounded-lg w-20 h-20 bg-gray-100 flex-shrink-0"
-                                                    data-alt="RGB Backlit mechanical keyboard"
-                                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_GjOrsI2R6xJqYtq_zGlTZIWD6xRsn-nBs06CXdOWaNdpUvVYDob75a5UHOS78qclgIoleZWySIjUF4avrzAt76WAkDxhmwVfqqqsXshEjB-xSNmj5NIXSZyBTHuEmBeu3co_5WxbQ1JFGkuq0ntSzPtboG3lnWj3PSZICZzggC4VwvCO8-IYk0_kfH7IzPDTix7e9cw2Prg6OBLxZC5H017adAFyLukKjJO5GbI7pDZCF7_wIJn_I_QfBOCNhEQ00ots-c-mEBE");'>
-                                                </div>
-                                                <div class="flex flex-col">
-                                                    <span
-                                                        class="text-[#111617] dark:text-white font-bold text-base leading-tight">Mechanic
-                                                        RGB Keyboard</span>
-                                                    <span class="text-[#647e87] dark:text-gray-400 text-xs mt-1">Brown
-                                                        Switches, Wired</span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="px-6 py-6 hidden md:table-cell">
-                                            <span class="text-[#647e87] dark:text-gray-300 font-medium">$89.00</span>
-                                        </td>
-                                        <td class="px-6 py-6">
-                                            <div class="flex items-center justify-center">
-                                                <div
-                                                    class="flex items-center border border-[#dce3e5] dark:border-gray-600 rounded-lg overflow-hidden h-9">
-                                                    <button
-                                                        class="px-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-primary transition-colors"><span
-                                                            class="material-symbols-outlined text-sm">remove</span></button>
-                                                    <input
-                                                        class="w-10 text-center border-none bg-transparent text-sm font-bold focus:ring-0 p-0"
-                                                        type="text" value="2" />
-                                                    <button
-                                                        class="px-2 hover:bg-gray-100 dark:hover:bg-gray-700 text-primary transition-colors"><span
-                                                            class="material-symbols-outlined text-sm">add</span></button>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="px-6 py-6 text-right">
-                                            <span class="text-[#111617] dark:text-white font-bold">$178.00</span>
-                                        </td>
-                                        <td class="px-6 py-6 text-center">
-                                            <button class="text-gray-400 hover:text-accent-red transition-colors">
-                                                <span class="material-symbols-outlined">delete_outline</span>
-                                            </button>
-                                        </td>
-                                    </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>

@@ -128,10 +128,10 @@ class Product{
         $stmt->execute();
     }
 
-    function readById(){
-        $sql = "SELECT p.*, c.name AS category_name FROM products p LEFT JOIN categories c ON c.id = p.category_id WHERE id = :id";
+    function readById($id){
+        $sql = "SELECT p.*, c.name AS category_name FROM products p LEFT JOIN categories c ON c.id = p.category_id WHERE p.id = :id";
         $stmt = $this->conn->prepare($sql);
-        $stmt->bindValue(":id", $this->getId());
+        $stmt->bindValue(":id", $id);
         $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, self::class);
         $stmt->execute();
         $product = $stmt->fetch();

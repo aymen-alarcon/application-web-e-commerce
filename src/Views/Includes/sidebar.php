@@ -16,6 +16,10 @@
     $products = $service->fetchProducts();
     $roles = $service->fetchRoles();
     $users = $service->fetchUsers();
+
+    if (!isset($_SESSION['id'])) {
+        header("Location: /Home");
+    }
 ?>
 <!DOCTYPE html>
 <html class="light" lang="en">

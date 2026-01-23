@@ -5,9 +5,19 @@
 
     $conn = DatabaseConnection::getInstance()->getConnection();
 
-    $handler = new  User($conn);
-    $handler->setId($_SESSION['id']);
-    $user = $handler->readById();
+    if (isset($_SESSION["id"])) {
+        $handler = new  User($conn);
+        $handler->setId($_SESSION['id']);
+        $user = $handler->readById();
+    }
+    
+    if (isset($_GET["SendToCart"]) && $_GET["SendToCart"] === "True") {
+        if (!in_array($_GET["id"], $_SESSION["cart"])) {
+            $_SESSION["cart"][] = $_GET["id"];  
+        }
+        $link = explode("&", $_SERVER["REQUEST_URI"]);
+        header("Location: " . $link[0]);
+    }
 
     $service = new UserService($conn);
 

@@ -24,9 +24,9 @@ class AuthController{
             exit;
         }
 
-
         $_SESSION["id"] = $user->getId();
         $_SESSION["role_id"] = $user->getRole_id();
+        $_SESSION["cart"] = [];
 
         if ($user->getRole_id() === 1) {
             header("Location: /Admin/Dashboard");
@@ -42,6 +42,7 @@ class AuthController{
         $handler->setEmail($_POST["email"]);
         $handler->setPassword($_POST["password"]);
         $handler->createUser();
+        $_SESSION["cart"] = [];
         header("Location: /Home");
         exit;
     }
