@@ -37,8 +37,6 @@
         function readOrder(){
             $handler = new Order($this->conn);
             $handler->setUser_id($_SESSION['id']);
-            $handler->read();
-
-            header("Location: /History");
+            return $handler->read();
         }
     }

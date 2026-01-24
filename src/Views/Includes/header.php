@@ -93,6 +93,7 @@
                     <?php foreach($categories as $category): ?>
                         <a class="text-sm font-medium hover:text-primary transition-colors" href="#"><?= $category->getName() ?></a>
                     <?php endforeach; ?>
+                    <a class="text-sm font-medium hover:text-primary transition-colors" href="/History">History</a>
                 </nav>
             </div>
             <div class="flex items-center gap-4 flex-1 justify-end">
