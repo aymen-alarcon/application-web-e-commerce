@@ -103,8 +103,9 @@ class Order{
     }
 
     function read(){
-        $sql = "SELECT o.*, u.first_name, u.last_name, u.email FROM orders o LEFT JOIN users u ON o.user_id = u.id";
+        $sql = "SELECT o.*, u.first_name, u.last_name, u.email FROM orders o LEFT JOIN users u ON o.user_id = u.id WHERE o.user_id = :id";
         $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(":id", $this->getUser_id());
         $stmt->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, self::class);
         $stmt->execute();
         $orders = $stmt->fetchAll();

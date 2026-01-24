@@ -32,6 +32,7 @@ $routing->get("/Signup", [$viewsController, "signupForm"]);
 $routing->get("/Logout", [$viewsController, "logOutForm"]);
 $routing->get("/Home", [$viewsController, "mainPage"]);
 $routing->get("/Cart", [$viewsController, "cartPage"]);
+$routing->get("/History", [$viewsController, "historyPage"]);
 $routing->get("/Product", [$viewsController, "productPage"]);
 $routing->get("/Admin/Dashboard", [$viewsController, "adminDashboardPage"]);
 $routing->get("/Admin/Categories", [$viewsController, "adminCategoryDashboardPage"]);
@@ -51,6 +52,7 @@ $routing->post("/updateProductProcess", [$ProductController, "updateProduct"]);
 $routing->post("/deleteProductProcess", [$ProductController, "deleteProduct"]);
 $routing->post("/registerOrderProcess", [$OrderController, "createOrder"]);
 $routing->post("/deleteOrderProcess", [$OrderController, "deleteOrder"]);
+$routing->post("/readOrderProcess", [$OrderController, "readOrder"]);
 $routing->get("/registerOrderItemProcess", [$OrderItemController, "createOrderItem"]);
 $routing->post("/deleteOrderItemProcess", [$OrderItemController, "deleteOrderItem"]);
 
