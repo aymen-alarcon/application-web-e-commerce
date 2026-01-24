@@ -30,7 +30,6 @@ CREATE TABLE products (
 CREATE TABLE orders (
     id int AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(150),
-    description TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     user_id INT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id)
@@ -40,8 +39,6 @@ CREATE TABLE order_items (
     id int AUTO_INCREMENT PRIMARY KEY,
     order_id INT NOT NULL,
     product_id INT NOT NULL,
-    product_name VARCHAR(150) NOT NULL,
-    price DECIMAL(10,2) NOT NULL,
     quantity INT NOT NULL CHECK (quantity > 0),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (order_id) REFERENCES orders(id),

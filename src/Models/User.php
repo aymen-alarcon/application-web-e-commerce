@@ -107,6 +107,7 @@ class User{
         $userId = $this->conn->lastInsertId();
         $this->setId($userId);
         $_SESSION["id"] = $userId;
+        $_SESSION["cart"] = [];
         $this->readById();
     }
 
@@ -122,6 +123,8 @@ class User{
         if (!$user || !password_verify($this->getPassword(), $user->getPassword())) {
             throw new PDOException("Invalid email or password.");
         }
+
+        $_SESSION['cart'] = []; 
 
         return $user;
     }

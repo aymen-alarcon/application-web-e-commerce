@@ -11,12 +11,12 @@ class DatabaseConnection{
     function __construct()
     {
         try {
-            $this->conn = new PDO("mysql:host=localhost;dbname=e_commerce;", "root", "");
+            $this->conn = new PDO("mysql:host=mysql;dbname=e_commerce;", "root", "root");
             $this->conn->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
-            echo $e->getMessage();
-            echo $this->conn->errorCode();
+            die("Database connection failed: " . $e->getMessage());
         }
+
     }
 
     static function getInstance(): DatabaseConnection{

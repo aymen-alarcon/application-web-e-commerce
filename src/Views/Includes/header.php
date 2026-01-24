@@ -10,6 +10,10 @@
         $handler->setId($_SESSION['id']);
         $user = $handler->readById();
     }
+
+    if (!isset($_SESSION['cart'])) {
+        $_SESSION['cart'] = [];
+    }
     
     if (isset($_GET["SendToCart"]) && $_GET["SendToCart"] === "True") {
         if (!in_array($_GET["id"], $_SESSION["cart"])) {
